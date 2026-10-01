@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="My personal portfolio, projects, and artwork.">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="#home">MY<span>PORTFOLIO.</span></a>
+
+    <button class="menu-toggle" id="menu-toggle"
+      aria-label="Toggle navigation" aria-expanded="false">
+      ☰
+    </button>
+
+    <nav id="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#artwork">Artwork</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <p class="eyebrow">COMPUTER ENGINEERING STUDENT & DIGITAL ARTIST</p>
+      <h1>Building things.<br>Creating <span>ideas.</span></h1>
+      <p class="intro">
+        I create digital artwork and develop technology-driven
+        projects that bring ideas to life.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="#projects">View my work ↗</a>
+        <a class="button secondary" href="#contact">Contact me</a>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <p class="eyebrow">A LITTLE ABOUT ME</p>
+      <h2>Who am I?</h2>
+      <p class="section-text">
+        I'm a Computer Engineering student interested in software
+        development, electronics, and creative design. I enjoy
+        combining technical problem-solving with visual creativity.
+      </p>
+      <div class="skills">
+        <span>HTML & CSS</span>
+        <span>JavaScript</span>
+        <span>Arduino</span>
+        <span>IoT Projects</span>
+        <span>Digital Art</span>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <p class="eyebrow">WHAT I'VE BEEN WORKING ON</p>
+      <h2>Featured projects</h2>
+      <div class="cards">
+        <article class="card">
+          <p class="card-number">01 / SOFTWARE</p>
+          <h3>Synced N</h3>
+          <p>A church music ministry scheduling and lineup management app.</p>
+          <p class="tags">Mobile App · Firebase</p>
+        </article>
+
+        <article class="card">
+          <p class="card-number">02 / HARDWARE</p>
+          <h3>Smart Assistive Cane</h3>
+          <p>An embedded system concept for safety alerts and reminders.</p>
+          <p class="tags">Arduino · Sensors · OLED</p>
+        </article>
+
+        <article class="card">
+          <p class="card-number">03 / IOT</p>
+          <h3>Smart Medication System</h3>
+          <p>A project concept combining medication reminders and wearable alerts.</p>
+          <p class="tags">ESP32 · IoT · Electronics</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="artwork">
+      <p class="eyebrow">MY CREATIVE SIDE</p>
+      <h2>Digital artwork</h2>
+      <p class="section-text">
+        A selection of my illustrations, portraits, and personal
+        art projects.
+      </p>
+<div class="art-gallery">
+  <img src="images/deku.jpg" alt="Digital portrait">
+  <img src="images/david.webp" alt="Digital illustration">
+  <img src="images/hyakimaru.webp" alt="Character artwork">
+</div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <p class="eyebrow">LET'S CONNECT</p>
+      <h2>Have a project in mind?</h2>
+      <p class="section-text">
+        Feel free to reach out for collaborations, commissions,
+        or project opportunities.
+      </p>
+      <a class="button primary"
+        href="mailto:your-email@example.com">Email me ↗</a>
+      <p class="socials">
+        <a href="https://github.com/">GitHub</a>
+        <a href="https://www.instagram.com/">Instagram</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> My Portfolio. Built with HTML, CSS & JS.</p>
+  </footer>
+</body>
+</html>
