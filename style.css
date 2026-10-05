@@ -262,6 +262,7 @@ nav a:hover {
 }
 
 
+
 .visual-box {
     width: 480px;
     height: 300px;
@@ -284,64 +285,21 @@ nav a:hover {
     justify-content: center;
 
     align-items: center;
+
+    text-align: center;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.4);
     
-    text-align: center;
-
-    box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.4);
-
-    overflow: hidden;
-}.visual-box {
-    width: 480px;
-    height: 300px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            var(--surface),
-            #101014
-        );
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.4);
-
-    overflow: hidden;
+     overflow: hidden;
 }
 
 .visual-box img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit:contain;
     display: block;
-}
-
-.visual-box span {
-    color: var(--accent);
-
-    font-size: 50px;
-
-    font-weight: 300;
-}
-
-
-.visual-box p {
-    color: var(--muted);
-
-    font-size: 20px;
-
-    margin: 10px 0;
-}
-
+}   
 
 /* ================= ABOUT ================= */
 
@@ -930,45 +888,7 @@ nav a:hover {
     outline: 2px solid var(--accent);
 
     outline-offset: 4px;
-}
-
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 800px) {
-
-    .contact-layout {
-        grid-template-columns: 1fr;
-
-        gap: 55px;
-
-        padding: 40px 25px;
-    }
-
-    .contact-intro h2 {
-        font-size: clamp(48px, 13vw, 70px);
-    }
-
-}
-
-
-@media (max-width: 500px) {
-
-    .contact-layout {
-        padding: 30px 20px;
-
-        border-radius: 18px;
-    }
-
-    .contact-email {
-        max-width: 100%;
-    }
-
-    .contact-email span:first-child {
-        font-size: 13px;
-    }
-
-}
+}   
 
 /* ================= FOOTER ================= */
 
@@ -984,64 +904,74 @@ footer {
 
 
 /* ================= MOBILE ================= */
-
 @media (max-width: 850px) {
 
     nav {
         display: none;
-
         width: 100%;
-
         flex-direction: column;
-
         gap: 15px;
     }
-
 
     nav.open {
         display: flex;
     }
 
-
     .navbar {
         flex-wrap: wrap;
     }
-
 
     .menu-toggle {
         display: block;
     }
 
-
     .hero {
         grid-template-columns: 1fr;
-
         padding-top: 80px;
     }
 
-
     .hero-visual {
-        display: none;
+        display: flex;
+        justify-content: center;
     }
 
+    .visual-box {
+        width: min(480px, 90vw);
+        height: 220px;
+    }
+
+    .visual-box img {
+        object-fit: contain;
+    }
 
     .about-grid {
         grid-template-columns: 1fr;
-
         gap: 30px;
     }
-
 
     .projects-grid {
         grid-template-columns: 1fr;
     }
-
 
     .art-grid {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
     }
 
+    /* CONTACT — MOBILE */
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding: 40px 25px;
+    }
+
+    .contact-socials {
+        width: 100%;
+    }
+
+    .social-card {
+        width: 100%;
+    }
 }
 
 
@@ -1059,8 +989,8 @@ footer {
 
 
     .hero h1 {
+        
         font-size: 48px;
-
         letter-spacing: -2px;
     }
 
