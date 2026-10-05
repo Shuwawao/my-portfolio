@@ -930,20 +930,23 @@ footer {
         padding-top: 80px;
     }
 
-    .hero-visual {
-        display: flex;
-        justify-content: center;
-    }
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 
-    .visual-box {
-        width: min(480px, 90vw);
-        height: 220px;
-    }
+.visual-box {
+    width: min(480px, 90vw);
+    height: 220px;
+}
 
-    .visual-box img {
-        object-fit: contain;
-    }
-
+.visual-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
     .about-grid {
         grid-template-columns: 1fr;
         gap: 30px;
