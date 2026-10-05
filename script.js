@@ -1,54 +1,99 @@
-const menuToggle =
-    document.getElementById("menu-toggle");
+// ================= SHARED NAVIGATION =================
 
-const navLinks =
-    document.getElementById("nav-links");
+const navbar = document.getElementById("navbar");
 
-const year =
-    document.getElementById("year");
+if (navbar) {
+
+    fetch("navbar.html")
+        .then(response => {
+
+            if (!response.ok) {
+                throw new Error("Could not load navbar.html");
+            }
+
+            return response.text();
+
+        })
+        .then(data => {
+
+            navbar.outerHTML = data;
+
+            initializeMobileMenu();
+
+        })
+        .catch(error => {
+
+            console.error("Navigation failed to load:", error);
+
+        });
+
+}
 
 
 // ================= MOBILE MENU =================
 
-menuToggle.addEventListener("click", () => {
+function initializeMobileMenu() {
 
-    const isOpen =
-        navLinks.classList.toggle("open");
+    const menuToggle =
+        document.getElementById("menu-toggle");
 
-    menuToggle.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-    );
+    const navLinks =
+        document.getElementById("nav-links");
 
-});
+    if (!menuToggle || !navLinks) {
+        return;
+    }
 
+    menuToggle.addEventListener("click", () => {
 
-// Close menu when a navigation link is clicked
-
-navLinks.querySelectorAll("a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        navLinks.classList.remove("open");
+        const isOpen =
+            navLinks.classList.toggle("open");
 
         menuToggle.setAttribute(
             "aria-expanded",
-            "false"
+            String(isOpen)
         );
 
     });
 
-});
+
+    // Close menu when a navigation link is clicked
+
+    navLinks.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            navLinks.classList.remove("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        });
+
+    });
+
+}
 
 
 // ================= CURRENT YEAR =================
 
-year.textContent =
-    new Date().getFullYear();
+const year =
+    document.getElementById("year");
+
+if (year) {
+
+    year.textContent =
+        new Date().getFullYear();
+
+}
+
 
 // ================= HERO TYPING EFFECT =================
 
-const typedRole = document.getElementById("typed-role");
+const typedRole =
+    document.getElementById("typed-role");
 
 const roles = [
     "DEVELOPER",
@@ -57,17 +102,21 @@ const roles = [
     "EMBEDDED SYSTEMS ENTHUSIAST"
 ];
 
-const reduceMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-).matches;
+const reduceMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
 
 if (typedRole && !reduceMotion) {
+
     let roleIndex = 0;
     let charIndex = roles[0].length;
     let deleting = false;
 
     function typeRole() {
-        const currentRole = roles[roleIndex];
+
+        const currentRole =
+            roles[roleIndex];
 
         if (deleting) {
             charIndex--;
@@ -75,21 +124,46 @@ if (typedRole && !reduceMotion) {
             charIndex++;
         }
 
-        typedRole.textContent = currentRole.slice(0, charIndex);
+        typedRole.textContent =
+            currentRole.slice(0, charIndex);
 
-        let delay = deleting ? 35 : 65;
+        let delay =
+            deleting ? 35 : 65;
 
-        if (!deleting && charIndex === currentRole.length) {
+        if (
+            !deleting &&
+            charIndex === currentRole.length
+        ) {
+
             deleting = true;
             delay = 1500;
-        } else if (deleting && charIndex === 0) {
-            deleting = false;
-            roleIndex = (roleIndex + 1) % roles.length;
-            delay = 300;
+
         }
 
-        setTimeout(typeRole, delay);
+        else if (
+            deleting &&
+            charIndex === 0
+        ) {
+
+            deleting = false;
+
+            roleIndex =
+                (roleIndex + 1) % roles.length;
+
+            delay = 300;
+
+        }
+
+        setTimeout(
+            typeRole,
+            delay
+        );
+
     }
 
-    setTimeout(typeRole, 1200);
+    setTimeout(
+        typeRole,
+        1200
+    );
+
 }
