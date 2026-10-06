@@ -3,378 +3,784 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <meta
-        name="description"
-        content="JUSWA — Computer Engineering student and developer exploring software, embedded systems, and IoT."
-    >
-
-    <title>JUSWA — Developer & Computer Engineering Student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JUSWA — Computer Engineering student, developer, and digital artist exploring software, embedded systems, IoT, and illustration.">
+    <title>JUSWA — Developer & Digital Artist</title>
 
     <link rel="icon" type="image/png" href="images/favicon.png">
-
     <link rel="stylesheet" href="style.css">
-
     <script src="script.js" defer></script>
 </head>
 
 <body>
 
+    <!-- Custom Cursor (Desktop Only) -->
+    <div class="custom-cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="custom-cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
     <!-- ================= NAVIGATION ================= -->
-      <div id="navbar"></div>
+    <header class="navbar" id="navbar">
+        <a href="#home" class="logo">
+            <div class="logo-badge">
+                <img src="images/favicon.png" alt="JUSWA Logo">
+            </div>
+            <span class="logo-text">JUSWA<span>.</span></span>
+            <span class="logo-meta">WORKSPACE</span>
+        </a>
 
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false">
+            ☰
+        </button>
 
-    <!-- ================= HERO ================= -->
+        <nav id="nav-links">
+            <a href="#home" data-section="home"><span class="nav-num">01</span> HOME</a>
+            <a href="#about" data-section="about"><span class="nav-num">02</span> ABOUT</a>
+            <a href="#skills" data-section="skills"><span class="nav-num">03</span> SKILLS</a>
+            <a href="#projects" data-section="projects"><span class="nav-num">04</span> PROJECTS</a>
+            <a href="#artwork" data-section="artwork"><span class="nav-num">05</span> ARTWORK</a>
+            <a href="#contact" data-section="contact"><span class="nav-num">06</span> CONTACT</a>
+        </nav>
 
+        <div class="nav-status">
+            <span class="nav-status-dot"></span>
+            <span>SYS: ONLINE</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- ================= HERO ================= -->
         <section class="hero" id="home">
+            <div class="hero-grid">
 
-            <div class="hero-content">
+                <div class="hero-content">
+                    <div class="hero-telemetry">
+                        <span class="telemetry-item">
+                            <span class="telemetry-pulse"></span>
+                            <span>SYS: ACTIVE</span>
+                        </span>
+                        <span class="telemetry-item">
+                            COMPUTER ENGINEERING • DEVELOPMENT • ART
+                        </span>
+                    </div>
 
-                <p class="eyebrow">
-                    COMPUTER ENGINEERING • DEVELOPMENT • EMBEDDED SYSTEMS
-                </p>
+                    <p class="hero-role">
+                        <span class="status-dot"></span>
+                        I'M A <span id="typed-role">DEVELOPER</span><span class="typing-cursor">|</span>
+                    </p>
 
-                <p class="hero-role">
-                    <span class="status-dot"></span>
-                    I'M A <span id="typed-role">DEVELOPER</span><span class="typing-cursor">|</span>
-                </p>
+                    <h1>
+                        I BUILD THINGS<br>
+                        WITH <span class="highlight">CODE.</span>
+                    </h1>
 
-                <h1>
-                    I BUILD THINGS
-                    <br>
-                    WITH <span>CODE.</span>
-                </h1>
+                    <p class="hero-description">
+                        I'm a Computer Engineering student exploring software,
+                        embedded systems, IoT, and digital art — building practical
+                        hardware and software systems with creative intent.
+                    </p>
 
-                <p class="hero-description">
-                    I'm a Computer Engineering student who enjoys
-                    turning ideas into practical software, embedded
-                    systems, and technology-driven projects.
-                </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="button primary">
+                            View Work <span class="arrow">→</span>
+                        </a>
+                        <a href="#contact" class="button secondary">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
 
-                <div class="hero-buttons">
+                <!-- HERO VISUAL: LIVING DIAGRAM -->
+                <div class="hero-visual">
+                    <div class="interactive-diagram-card" id="hero-diagram-card">
 
-                    <a
-                        href="projects.html"
-                        class="button primary">
-                        View My Work →
+                        <div class="card-header-bar">
+                            <div class="card-title-mode">
+                                <span class="mode-indicator">●</span>
+                                <span>MODE: CREATIVE_WORKSPACE</span>
+                            </div>
+                            <div class="card-telemetry-status">
+                                <span>SYS: ONLINE</span>
+                            </div>
+                        </div>
 
-                    </a>
+                        <div class="living-diagram-body" id="living-diagram-body">
+                            <div class="diagram-grid-overlay"></div>
+                            <div class="diagram-axis-x"></div>
 
-                    <a
-                        href="contact.html"
-                        class="button secondary">
-                        Contact Me
+                            <div class="diagram-canvas-target" id="diagram-target">
+                                <span class="brace-symbol left" aria-hidden="true">{</span>
+                                <div class="diagram-core-statement">
+                                    <span class="core-term creativity">creativity</span>
+                                    <span class="operator">+</span>
+                                    <span class="core-term technology">technology</span>
+                                </div>
+                                <span class="brace-symbol right" aria-hidden="true">}</span>
+                            </div>
 
-                    </a>
+                            <!-- Drawer to view artist self-portrait avatar -->
+                            <div class="portrait-preview-drawer" id="portrait-drawer">
+                                <img src="images/juswa.png" alt="JUSWA illustrated self-portrait at workspace" loading="lazy">
+                                <button class="close-drawer" id="close-portrait-btn">← RETURN TO SCHEMATIC</button>
+                            </div>
+                        </div>
 
+                        <div class="card-footer-bar">
+                            <span class="pointer-coords" id="diagram-coords">INPUT: POINTER [X: 000, Y: 000]</span>
+                            <button class="diagram-view-toggle" id="toggle-avatar-btn" title="View digital artist self-portrait">
+                                <span>[ARTIST / WORKSPACE]</span>
+                            </button>
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
-
-
-<div class="hero-visual">
-
-    <div class="visual-box">
-        <img src="images/juswa.png" alt="JUSWA" class="hero-image">
-    </div>
-
-</div>
-
         </section>
 
-
-        <!-- ================= FEATURED PROJECTS ================= -->
-
-        <section class="section" id="featured-projects">
-
-            <div class="section-heading">
-
-                <p class="eyebrow">
-                    01 / FEATURED PROJECTS
-                </p>
-
-                <h2>
-                    Things I've been building.
-                </h2>
-
+        <!-- ================= 02 / ABOUT ================= -->
+        <section class="section reveal-on-scroll" id="about">
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">02 /</span> ABOUT ME
+                    </p>
+                    <h2>A little about me.</h2>
+                </div>
             </div>
-
-
-            <div class="projects-grid">
-
-
-                <!-- PROJECT 1 -->
-
-                <article class="project-card">
-
-                    <div class="project-image">
-
-                        <div class="image-placeholder">
-                            SYNCED N
-                        </div>
-
-                    </div>
-
-                    <div class="project-content">
-
-                        <p class="project-type">
-                            MOBILE APPLICATION
-                        </p>
-
-                        <h3>
-                            Synced N
-                        </h3>
-
-                        <p>
-                            A church music ministry scheduling
-                            and lineup management system designed
-                            to organize schedules, availability,
-                            assignments, and song information.
-                        </p>
-
-                        <div class="project-tags">
-
-                            <span>Kotlin</span>
-                            <span>Firebase</span>
-                            <span>Android</span>
-
-                        </div>
-
-                        <a
-                            href="projects.html"
-                            class="project-link">
-                            View Project →
-
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PROJECT 2 -->
-
-                <article class="project-card">
-
-                    <div class="project-image">
-
-                        <div class="image-placeholder">
-                            SMART<br>CANE
-                        </div>
-
-                    </div>
-
-                    <div class="project-content">
-
-                        <p class="project-type">
-                            EMBEDDED SYSTEM
-                        </p>
-
-                        <h3>
-                            Smart Assistive Cane
-                        </h3>
-
-                        <p>
-                            An Arduino-based assistive system
-                            combining sensors, reminders,
-                            display output, and safety-oriented
-                            features.
-                        </p>
-
-                        <div class="project-tags">
-
-                            <span>Arduino</span>
-                            <span>OLED</span>
-                            <span>Sensors</span>
-
-                        </div>
-
-                        <a
-                            href="projects.html"
-                            class="project-link">
-                            View Project →
-
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PROJECT 3 -->
-
-                <article class="project-card">
-
-                    <div class="project-image">
-
-                        <div class="image-placeholder">
-                            IOT<br>WATCH
-                        </div>
-
-                    </div>
-
-                    <div class="project-content">
-
-                        <p class="project-type">
-                            IOT / WEARABLE
-                        </p>
-
-                        <h3>
-                            Smart Medication System
-                        </h3>
-
-                        <p>
-
-                            A wearable-assisted IoT concept
-                            focused on medication reminders
-                            and real-time monitoring.
-                        </p>
-
-                        <div class="project-tags">
-
-                            <span>ESP32</span>
-                            <span>IoT</span>
-                            <span>Wearable</span>
-
-                        </div>
-
-                        <a
-                            href="projects.html"
-                            class="project-link">
-                            View Project →
-                            
-                        </a>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= ABOUT PREVIEW ================= -->
-
-        <section class="section">
-
-            <div class="section-heading">
-
-                <p class="eyebrow">
-                    02 / ABOUT
-                </p>
-
-                <h2>
-                    More than just code.
-                </h2>
-
-            </div>
-
 
             <div class="about-grid">
-
-                <div>
-
-                    <p class="large-text">
-                        I'm a Computer Engineering student
-                        interested in building practical
-                        technology while keeping creativity
-                        at the center of the process.
+                <div class="about-narrative">
+                    <p class="about-statement">
+                        I'm a Computer Engineering student interested in building
+                        <span class="accent">practical technology</span> while keeping
+                        creativity at the center of the process.
                     </p>
-
+                    <p>
+                        My interests span both low-level physical computing and high-level software:
+                        from embedded systems and IoT sensor telemetry to mobile application
+                        architecture and digital illustration.
+                    </p>
+                    <p>
+                        Whether wiring microcontrollers, configuring cloud synchronization,
+                        or painting portraits in Krita, I approach every project with curiosity,
+                        discipline, and attention to functional detail.
+                    </p>
                 </div>
 
+                <div class="about-dossier">
+                    <div class="dossier-header">
+                        <span>WORKSPACE PROFILE</span>
+                        <span>CE // DEV // ART</span>
+                    </div>
 
-                <div>
+                    <div class="dossier-list">
+                        <div class="dossier-row">
+                            <span class="dossier-label">DISCIPLINE</span>
+                            <span class="dossier-value">Computer Engineering</span>
+                        </div>
 
-                    <p class="section-text">
-                        My interests range from mobile
-                        application development and embedded
-                        systems to IoT and hardware projects.
-                    </p>
+                        <div class="dossier-row">
+                            <span class="dossier-label">PRIMARY FOCUS AREAS</span>
+                            <div class="focus-pills">
+                                <span class="focus-pill">Software</span>
+                                <span class="focus-pill">Embedded Systems</span>
+                                <span class="focus-pill">IoT</span>
+                                <span class="focus-pill">Digital Art</span>
+                            </div>
+                        </div>
 
-                    <p class="section-text">
-                        I enjoy learning by creating projects,
-                        experimenting with technology, and
-                        turning ideas into working systems.
-                    </p>
+                        <div class="dossier-row">
+                            <span class="dossier-label">PHYSICAL HARDWARE</span>
+                            <span class="dossier-value">Arduino, ESP32, OLEDs, Sensors, I²C</span>
+                        </div>
 
-                    <a
-                        href="about.html"
-                        class="project-link">
-                        More About Me →
-                    </a>
-
+                        <div class="dossier-row">
+                            <span class="dossier-label">CREATIVE MEDIUM</span>
+                            <span class="dossier-value">Digital Illustration & Sketching (Krita)</span>
+                        </div>
+                    </div>
                 </div>
-
             </div>
-
         </section>
 
-
-        <!-- ================= CONTACT CTA ================= -->
-
-        <section class="section contact">
-
-            <div class="contact-glow"></div>
-
-            <p class="eyebrow">
-                03 / CONTACT
-            </p>
-
-
-            <div class="contact-layout">
-
-                <div class="contact-intro">
-
-                    <h2>
-                        Let's build
-                        <span>something.</span>
-                    </h2>
-
-                    <p class="section-text">
-                        Interested in working together,
-                        discussing a project, or just saying
-                        hello? My inbox is always open.
+        <!-- ================= 03 / SKILLS ================= -->
+        <section class="section reveal-on-scroll" id="skills">
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">03 /</span> CAPABILITY
                     </p>
+                    <h2>Technical toolbox.</h2>
+                    <p class="section-desc">
+                        A structured breakdown of languages, platforms, hardware, and creative tools
+                        I work with across engineering and art.
+                    </p>
+                </div>
+            </div>
 
-                    <a
-                        href="contact.html"
-                        class="contact-email">
+            <div class="skills-toolbox-container">
+                <div class="skills-grid">
 
-                        <span>
-                            Get in touch
-                        </span>
+                    <!-- CATEGORY 1: DEVELOPMENT -->
+                    <div class="skill-category-card">
+                        <div class="category-card-header">
+                            <h3>Development</h3>
+                            <span class="cat-code">01_DEV</span>
+                        </div>
+                        <div class="skill-items-list">
+                            <div class="skill-item-pill" data-skill="HTML" data-cat="Development" data-project="Personal Portfolio" data-desc="Semantic markup, accessible structure, and clean web foundations.">
+                                <span>HTML</span>
+                                <span class="pill-tag">MARKUP</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="CSS" data-cat="Development" data-project="Personal Portfolio" data-desc="Modern layout architecture, responsive design tokens, and smooth CSS transforms.">
+                                <span>CSS</span>
+                                <span class="pill-tag">STYLE</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="JavaScript" data-cat="Development" data-project="Personal Portfolio" data-desc="Vanilla JS, DOM manipulation, asynchronous fetching, and micro-interactions.">
+                                <span>JavaScript</span>
+                                <span class="pill-tag">LOGIC</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="Kotlin" data-cat="Development" data-project="Synced N" data-desc="Statically-typed language powering modern Android mobile application architecture.">
+                                <span>Kotlin</span>
+                                <span class="pill-tag">APP</span>
+                            </div>
+                        </div>
+                    </div>
 
-                        <span class="email-arrow">
-                            ↗
-                        </span>
+                    <!-- CATEGORY 2: MOBILE & CLOUD -->
+                    <div class="skill-category-card">
+                        <div class="category-card-header">
+                            <h3>Mobile & Cloud</h3>
+                            <span class="cat-code">02_CLOUD</span>
+                        </div>
+                        <div class="skill-items-list">
+                            <div class="skill-item-pill" data-skill="Android Studio" data-cat="Mobile & Cloud" data-project="Synced N" data-desc="Official IDE for Android development, UI building, emulator debugging, and Gradle builds.">
+                                <span>Android Studio</span>
+                                <span class="pill-tag">IDE</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="Firebase" data-cat="Mobile & Cloud" data-project="Synced N" data-desc="Backend-as-a-service providing real-time database sync, auth, and cloud storage.">
+                                <span>Firebase</span>
+                                <span class="pill-tag">BACKEND</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="Git" data-cat="Mobile & Cloud" data-project="All Projects" data-desc="Distributed version control, branch management, and collaborative workflow.">
+                                <span>Git</span>
+                                <span class="pill-tag">VCS</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="GitHub" data-cat="Mobile & Cloud" data-project="Shuwawao" data-desc="Repository hosting, issue tracking, continuous integration, and open source.">
+                                <span>GitHub</span>
+                                <span class="pill-tag">HOSTING</span>
+                            </div>
+                        </div>
+                    </div>
 
-                    </a>
+                    <!-- CATEGORY 3: HARDWARE & IOT -->
+                    <div class="skill-category-card">
+                        <div class="category-card-header">
+                            <h3>Hardware & IoT</h3>
+                            <span class="cat-code">03_HARDWARE</span>
+                        </div>
+                        <div class="skill-items-list">
+                            <div class="skill-item-pill" data-skill="Arduino" data-cat="Hardware & IoT" data-project="Smart Assistive Cane" data-desc="Microcontroller platform programmed in C/C++ for sensor reading, timers, and actuators.">
+                                <span>Arduino</span>
+                                <span class="pill-tag">MCU</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="ESP32" data-cat="Hardware & IoT" data-project="Smart Medication System" data-desc="Wi-Fi and dual-mode Bluetooth microcontroller used for IoT telemetry and wireless alerts.">
+                                <span>ESP32</span>
+                                <span class="pill-tag">SOC/WIFI</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="Sensors" data-cat="Hardware & IoT" data-project="Smart Assistive Cane" data-desc="Ultrasonic distance sensors, motion detectors, ambient light sensors, and RTC modules.">
+                                <span>Sensors</span>
+                                <span class="pill-tag">INPUT</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="I²C" data-cat="Hardware & IoT" data-project="Smart Assistive Cane" data-desc="Two-wire synchronous serial protocol for connecting OLED displays and peripheral sensor ICs.">
+                                <span>I²C</span>
+                                <span class="pill-tag">BUS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CATEGORY 4: CREATIVE -->
+                    <div class="skill-category-card">
+                        <div class="category-card-header">
+                            <h3>Creative</h3>
+                            <span class="cat-code">04_ART</span>
+                        </div>
+                        <div class="skill-items-list">
+                            <div class="skill-item-pill" data-skill="Krita" data-cat="Creative" data-project="Digital Sketchbook" data-desc="Professional open-source raster painting suite used for digital character art and illustration.">
+                                <span>Krita</span>
+                                <span class="pill-tag">STUDIO</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="Digital Art" data-cat="Creative" data-project="Digital Sketchbook" data-desc="Digital illustration focusing on stylized lighting, color theory, portraits, and dynamic posing.">
+                                <span>Digital Art</span>
+                                <span class="pill-tag">CRAFT</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="Illustration" data-cat="Creative" data-project="Digital Sketchbook" data-desc="Character design, anime/manga aesthetic studies, cel shading, and ink linework.">
+                                <span>Illustration</span>
+                                <span class="pill-tag">ART</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="UI Design" data-cat="Creative" data-project="Synced N & Web" data-desc="Interface wireframing, layout hierarchy, typographic systems, and user interaction design.">
+                                <span>UI Design</span>
+                                <span class="pill-tag">DESIGN</span>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 
+                <!-- LIVE INSPECTOR PANEL (UPDATES ON HOVER) -->
+                <div class="skill-inspector-panel" id="skill-inspector">
+                    <div class="inspector-target-title">
+                        <span class="inspector-meta-label">TOOL INSPECTOR</span>
+                        <span class="inspector-name" id="insp-name">ESP32</span>
+                    </div>
+                    <div class="inspector-info-body">
+                        <p class="inspector-desc" id="insp-desc">
+                            Wi-Fi and dual-mode Bluetooth microcontroller used for IoT telemetry and wireless wearable communication.
+                        </p>
+                        <div class="inspector-project-meta">
+                            <span>CATEGORY: <strong id="insp-cat">HARDWARE & IOT</strong></span>
+                            <span>•</span>
+                            <span>USED IN: <strong id="insp-project">SMART MEDICATION SYSTEM</strong></span>
+                        </div>
+                    </div>
+                    <div class="inspector-hint">
+                        <span class="telemetry-item">STATUS: VERIFIED</span>
+                    </div>
+                </div>
             </div>
-
         </section>
 
+        <!-- ================= 04 / PROJECTS ================= -->
+        <section class="section reveal-on-scroll" id="projects">
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">04 /</span> PROOF OF WORK
+                    </p>
+                    <h2>Selected projects.</h2>
+                    <p class="section-desc">
+                        Engineering prototypes and software systems solving real scheduling,
+                        assistive mobility, and medication coordination problems.
+                    </p>
+                </div>
+            </div>
+
+            <div class="projects-editorial-list">
+
+                <!-- PROJECT 01: SYNCED N -->
+                <article class="project-showcase-entry">
+                    <div class="project-entry-details">
+                        <div class="project-meta-top">
+                            <span class="project-serial">01</span>
+                            <span class="project-type-tag">MOBILE APPLICATION</span>
+                        </div>
+                        <h3 class="project-entry-title">Synced N</h3>
+                        <p class="project-entry-subtitle">
+                            Church Music Ministry Schedule & Lineup Management System
+                        </p>
+                        <p class="project-entry-desc">
+                            A mobile application designed to centralize the coordination of worship
+                            ministry teams. It organizes member availability, rehearsal lineups,
+                            song assignments, musical keys, and service schedules into one synchronized system.
+                        </p>
+                        <div class="project-tech-tags">
+                            <span class="project-tech-tag">Kotlin</span>
+                            <span class="project-tech-tag">Firebase</span>
+                            <span class="project-tech-tag">Android Studio</span>
+                            <span class="project-tech-tag">UI/UX</span>
+                        </div>
+                        <div class="project-action-row">
+                            <a href="synced-n.html" class="project-link-primary">
+                                View Case Study <span class="arrow">→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Bespoke Technical Schematic UI for Synced N -->
+                    <div class="project-visual-container">
+                        <div class="schematic-header">
+                            <span>APP SCHEMATIC // LINEUP MODULE</span>
+                            <span>SYNCED_N.KT</span>
+                        </div>
+                        <div class="schematic-synced-n">
+                            <div class="schematic-schedule-card">
+                                <div class="sched-title">
+                                    <span>UPCOMING SERVICE // SUN 09:00</span>
+                                    <span>ROSTER: CONFIRMED</span>
+                                </div>
+                                <div class="sched-lineup-row">
+                                    <span>01. Opening Praise</span>
+                                    <span class="key-tag">KEY: G MAJ</span>
+                                </div>
+                                <div class="sched-lineup-row">
+                                    <span>02. Worship Ballad</span>
+                                    <span class="key-tag">KEY: D MAJ</span>
+                                </div>
+                                <div class="sched-lineup-row">
+                                    <span>03. Offering & Response</span>
+                                    <span class="key-tag">KEY: C MAJ</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="schematic-header" style="border-bottom:none; margin-bottom:0; padding-bottom:0; border-top: 1px solid var(--border-subtle); padding-top: 10px;">
+                            <span>DB: FIREBASE REALTIME</span>
+                            <span>PLATFORM: ANDROID</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PROJECT 02: SMART ASSISTIVE CANE -->
+                <article class="project-showcase-entry">
+                    <div class="project-entry-details">
+                        <div class="project-meta-top">
+                            <span class="project-serial">02</span>
+                            <span class="project-type-tag">EMBEDDED SYSTEM</span>
+                        </div>
+                        <h3 class="project-entry-title">Smart Assistive Cane</h3>
+                        <p class="project-entry-subtitle">
+                            Mobility Aid for Safety and Reminder System
+                        </p>
+                        <p class="project-entry-desc">
+                            An Arduino Nano-based assistive system augmenting a standard cane with
+                            obstacle sensing, automatic low-light lighting, an I²C OLED display,
+                            RTC-driven audible reminders, and real-time step monitoring.
+                        </p>
+                        <div class="project-tech-tags">
+                            <span class="project-tech-tag">Arduino Nano</span>
+                            <span class="project-tech-tag">OLED 0.96"</span>
+                            <span class="project-tech-tag">Ultrasonic Sensors</span>
+                            <span class="project-tech-tag">RTC Module</span>
+                            <span class="project-tech-tag">I²C Bus</span>
+                        </div>
+                        <div class="project-action-row">
+                            <a href="smart-cane.html" class="project-link-primary">
+                                View Case Study <span class="arrow">→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Bespoke Hardware Architecture Diagram -->
+                    <div class="project-visual-container">
+                        <div class="schematic-header">
+                            <span>HARDWARE WIRING BLOCK DIAGRAM</span>
+                            <span>MCU: ATMEGA328P</span>
+                        </div>
+                        <div class="schematic-cane-diag">
+                            <div class="hw-node">
+                                <div class="hw-node-title">INPUT // DISTANCE</div>
+                                <div class="hw-node-val">Ultrasonic Range</div>
+                            </div>
+                            <div class="hw-node">
+                                <div class="hw-node-title">INPUT // TIME</div>
+                                <div class="hw-node-val">DS3231 RTC</div>
+                            </div>
+                            <div class="hw-bus-line">
+                                <span>I²C DATA BUS (SDA / SCL)</span>
+                                <span>400 kHz SPEED</span>
+                            </div>
+                            <div class="hw-node">
+                                <div class="hw-node-title">OUTPUT // DISPLAY</div>
+                                <div class="hw-node-val">SSD1306 OLED</div>
+                            </div>
+                            <div class="hw-node">
+                                <div class="hw-node-title">OUTPUT // SAFETY</div>
+                                <div class="hw-node-val">Buzzer + High-LED</div>
+                            </div>
+                        </div>
+                        <div class="schematic-header" style="border-bottom:none; margin-bottom:0; padding-bottom:0; border-top: 1px solid var(--border-subtle); padding-top: 10px;">
+                            <span>STATUS: PROTOTYPE VERIFIED</span>
+                            <span>PWR: 5V REGULATED</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PROJECT 03: SMART MEDICATION SYSTEM -->
+                <article class="project-showcase-entry">
+                    <div class="project-entry-details">
+                        <div class="project-meta-top">
+                            <span class="project-serial">03</span>
+                            <span class="project-type-tag">IOT / WEARABLE SYSTEM</span>
+                        </div>
+                        <h3 class="project-entry-title">Smart Medication System</h3>
+                        <p class="project-entry-subtitle">
+                            Automated Dispensing with Wearable-Assisted Alerts
+                        </p>
+                        <p class="project-entry-desc">
+                            A wearable-assisted IoT healthcare system pairing an ESP32-powered
+                            dispenser with wireless alerts and real-time monitoring to ensure
+                            adherence to medication schedules.
+                        </p>
+                        <div class="project-tech-tags">
+                            <span class="project-tech-tag">ESP32</span>
+                            <span class="project-tech-tag">IoT Telemetry</span>
+                            <span class="project-tech-tag">Wearable Alerts</span>
+                            <span class="project-tech-tag">Wi-Fi / BLE</span>
+                        </div>
+                        <div class="project-action-row">
+                            <a href="smart-medication.html" class="project-link-primary">
+                                View Case Study <span class="arrow">→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Bespoke IoT Telemetry Schematic -->
+                    <div class="project-visual-container">
+                        <div class="schematic-header">
+                            <span>IOT TELEMETRY & DISPENSER PACKET</span>
+                            <span>NODE: ESP32-WROOM</span>
+                        </div>
+                        <div class="schematic-med-diag">
+                            <div class="iot-status-row">
+                                <span class="metric-label">DISPENSER CYCLE</span>
+                                <span class="metric-val">SLOT #03 DISPENSED</span>
+                            </div>
+                            <div class="iot-status-row">
+                                <span class="metric-label">WEARABLE STATUS</span>
+                                <span class="metric-val">LINKED // BLE PAIRED</span>
+                            </div>
+                            <div class="iot-status-row">
+                                <span class="metric-label">REMINDER SCHEDULE</span>
+                                <span class="metric-val">NEXT DOSAGE: 12:00</span>
+                            </div>
+                        </div>
+                        <div class="schematic-header" style="border-bottom:none; margin-bottom:0; padding-bottom:0; border-top: 1px solid var(--border-subtle); padding-top: 10px;">
+                            <span>NETWORK: MQTT / BLE</span>
+                            <span>ACCURACY: REAL-TIME</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ================= 05 / ARTWORK ================= -->
+        <section class="section reveal-on-scroll" id="artwork">
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">05 /</span> EXPRESSION
+                    </p>
+                    <h2>Digital sketchbook.</h2>
+                    <p class="section-desc">
+                        Original digital paintings, character illustrations, and stylization studies
+                        drawn with digital pens in Krita. Click any artwork to view in high resolution.
+                    </p>
+                </div>
+            </div>
+
+            <div class="artwork-editorial-gallery">
+
+                <!-- ARTWORK 1: SPIDER-PUNK (FEATURED) -->
+                <article class="art-sketchbook-card art-card-featured" 
+                         data-index="0"
+                         data-title="Spider-Punk (Hobie Brown)"
+                         data-medium="Digital Illustration • Halftone & Cel Study"
+                         data-src="images/spiderman.webp">
+                    <div class="art-image-frame">
+                        <img src="images/spiderman.webp" alt="Spider-Punk digital illustration with electric guitar by JUSWA" loading="lazy">
+                    </div>
+                    <div class="art-card-caption">
+                        <div class="art-info-meta">
+                            <span class="art-title">Spider-Punk</span>
+                            <span class="art-medium">Dynamic Line & Halftone Study</span>
+                        </div>
+                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                    </div>
+                </article>
+
+                <!-- ARTWORK 2: DAVID & LUCY ON THE MOON (WIDE) -->
+                <article class="art-sketchbook-card art-card-wide" 
+                         data-index="1"
+                         data-title="David & Lucy — To The Moon"
+                         data-medium="Digital Painting • Cyberpunk: Edgerunners Scene Study"
+                         data-src="images/cyberpunk.webp">
+                    <div class="art-image-frame">
+                        <img src="images/cyberpunk.webp" alt="David and Lucy on the moon digital painting by JUSWA" loading="lazy">
+                    </div>
+                    <div class="art-card-caption">
+                        <div class="art-info-meta">
+                            <span class="art-title">David & Lucy on the Moon</span>
+                            <span class="art-medium">Atmospheric Scene & Lighting Study</span>
+                        </div>
+                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                    </div>
+                </article>
+
+                <!-- ARTWORK 3: DAVID MARTINEZ -->
+                <article class="art-sketchbook-card art-card-col-4" 
+                         data-index="2"
+                         data-title="David Martinez"
+                         data-medium="Digital Illustration • Neon Rim Light Study"
+                         data-src="images/david.webp">
+                    <div class="art-image-frame">
+                        <img src="images/david.webp" alt="David Martinez Cyberpunk Edgerunners portrait by JUSWA" loading="lazy">
+                    </div>
+                    <div class="art-card-caption">
+                        <div class="art-info-meta">
+                            <span class="art-title">David Martinez</span>
+                            <span class="art-medium">Neon Edge Lighting & Expression</span>
+                        </div>
+                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                    </div>
+                </article>
+
+                <!-- ARTWORK 4: HYAKKIMARU -->
+                <article class="art-sketchbook-card art-card-col-4" 
+                         data-index="3"
+                         data-title="Hyakkimaru (Dororo)"
+                         data-medium="Digital Illustration • Motion & Blade Study"
+                         data-src="images/hyakimaru.webp">
+                    <div class="art-image-frame">
+                        <img src="images/hyakimaru.webp" alt="Hyakkimaru action pose digital illustration by JUSWA" loading="lazy">
+                    </div>
+                    <div class="art-card-caption">
+                        <div class="art-info-meta">
+                            <span class="art-title">Hyakkimaru</span>
+                            <span class="art-medium">Action Posing & Blade Velocity</span>
+                        </div>
+                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                    </div>
+                </article>
+
+                <!-- ARTWORK 5: DEKU (IZUKU MIDORIYA) -->
+                <article class="art-sketchbook-card art-card-col-4" 
+                         data-index="4"
+                         data-title="Izuku Midoriya (Deku)"
+                         data-medium="Digital Illustration • Energy Aura & Shading"
+                         data-src="images/deku.jpg">
+                    <div class="art-image-frame">
+                        <img src="images/deku.jpg" alt="Izuku Midoriya Deku digital illustration by JUSWA" loading="lazy">
+                    </div>
+                    <div class="art-card-caption">
+                        <div class="art-info-meta">
+                            <span class="art-title">Deku</span>
+                            <span class="art-medium">Energy Aura & Perspective Study</span>
+                        </div>
+                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ================= 06 / CONTACT ================= -->
+        <section class="section reveal-on-scroll" id="contact">
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">06 /</span> CONNECTION
+                    </p>
+                    <h2>Let's build something.</h2>
+                </div>
+            </div>
+
+            <div class="contact-editorial-layout">
+                <div class="contact-left-col">
+                    <div class="contact-heading-wrap">
+                        <h2>
+                            Ready to create<br>
+                            <span class="accent">together?</span>
+                        </h2>
+                    </div>
+                    <p class="contact-intro-desc">
+                        Whether you want to collaborate on embedded systems, software development,
+                        discuss IoT ideas, or explore digital illustration — my inbox is always open.
+                    </p>
+                    <a href="mailto:joshualagare255@gmail.com" class="direct-email-button">
+                        <span>joshualagare255@gmail.com</span>
+                        <span class="mail-arrow" aria-hidden="true">↗</span>
+                    </a>
+                </div>
+
+                <div class="contact-right-col">
+                    <div class="social-network-list">
+                        <div class="social-network-header">
+                            <span>VERIFIED CHANNELS</span>
+                        </div>
+
+                        <a href="https://github.com/Shuwawao" target="_blank" rel="noopener noreferrer" class="social-instrument-link">
+                            <div class="link-left">
+                                <span class="social-tag-code">GH</span>
+                                <div class="social-name-meta">
+                                    <span class="name">GitHub</span>
+                                    <span class="handle">@Shuwawao</span>
+                                </div>
+                            </div>
+                            <span class="social-arrow-dir">↗</span>
+                        </a>
+
+                        <a href="https://www.instagram.com/juswa_draws" target="_blank" rel="noopener noreferrer" class="social-instrument-link">
+                            <div class="link-left">
+                                <span class="social-tag-code">IG</span>
+                                <div class="social-name-meta">
+                                    <span class="name">Instagram · Art</span>
+                                    <span class="handle">@juswa_draws</span>
+                                </div>
+                            </div>
+                            <span class="social-arrow-dir">↗</span>
+                        </a>
+
+                        <a href="https://www.instagram.com/shuwawao" target="_blank" rel="noopener noreferrer" class="social-instrument-link">
+                            <div class="link-left">
+                                <span class="social-tag-code">IG</span>
+                                <div class="social-name-meta">
+                                    <span class="name">Instagram · Personal</span>
+                                    <span class="handle">@shuwawao</span>
+                                </div>
+                            </div>
+                            <span class="social-arrow-dir">↗</span>
+                        </a>
+
+                        <a href="https://www.facebook.com/share/1F1aA2ChW4/" target="_blank" rel="noopener noreferrer" class="social-instrument-link">
+                            <div class="link-left">
+                                <span class="social-tag-code">FB</span>
+                                <div class="social-name-meta">
+                                    <span class="name">Facebook</span>
+                                    <span class="handle">JUSWA</span>
+                                </div>
+                            </div>
+                            <span class="social-arrow-dir">↗</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <!-- ================= ARTWORK LIGHTBOX MODAL ================= -->
+    <div class="art-lightbox-overlay" id="art-lightbox" role="dialog" aria-modal="true" aria-label="Artwork Viewer">
+        <div class="lightbox-content-box">
+            <button class="lightbox-close-btn" id="lightbox-close-btn" aria-label="Close viewer">
+                <span>[ESC] CLOSE</span>
+            </button>
+            <button class="lightbox-nav-btn prev" id="lightbox-prev-btn" aria-label="Previous artwork">‹</button>
+            <button class="lightbox-nav-btn next" id="lightbox-next-btn" aria-label="Next artwork">›</button>
+
+            <div class="lightbox-image-holder">
+                <img src="" alt="" id="lightbox-img">
+            </div>
+
+            <div class="lightbox-caption-bar">
+                <span class="caption-title" id="lightbox-title">Artwork Title</span>
+                <span class="caption-medium" id="lightbox-medium">Digital Illustration</span>
+            </div>
+        </div>
+    </div>
 
     <!-- ================= FOOTER ================= -->
-
     <footer>
-
         <p>
-            © <span id="year"></span> JUSWA.
-            Built with HTML, CSS & JavaScript.
+            © <span id="year"></span> JUSWA. Built with HTML, CSS &amp; JavaScript.
         </p>
-
+        <div class="footer-meta-pill">
+            <span class="nav-status-dot"></span>
+            <span>CODE + HARDWARE + ART • ALL SYSTEMS OPERATIONAL</span>
+        </div>
     </footer>
-
 
 </body>
 

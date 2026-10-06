@@ -15,6 +15,7 @@
 
     <title>Synced N — JUSWA</title>
 
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="style.css">
 
     <script src="script.js" defer></script>
@@ -23,31 +24,36 @@
 <body>
 
     <!-- ================= NAVIGATION ================= -->
-
-    <header class="navbar">
-
-        <a href="index.html" class="logo">
-            JUSWA<span>.</span>
+    <header class="navbar" id="navbar">
+        <a href="index.html#home" class="logo">
+            <div class="logo-badge">
+                <img src="images/favicon.png" alt="JUSWA Logo">
+            </div>
+            <span class="logo-text">JUSWA<span>.</span></span>
+            <span class="logo-meta">WORKSPACE</span>
         </a>
 
         <button
             class="menu-toggle"
             id="menu-toggle"
-            aria-label="Open navigation"
+            aria-label="Toggle navigation menu"
             aria-expanded="false">
             ☰
         </button>
 
         <nav id="nav-links">
-
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="skills.html">Skills</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
-
+            <a href="index.html#home" data-section="home"><span class="nav-num">01</span> HOME</a>
+            <a href="index.html#about" data-section="about"><span class="nav-num">02</span> ABOUT</a>
+            <a href="index.html#skills" data-section="skills"><span class="nav-num">03</span> SKILLS</a>
+            <a href="index.html#projects" data-section="projects" class="active"><span class="nav-num">04</span> PROJECTS</a>
+            <a href="index.html#artwork" data-section="artwork"><span class="nav-num">05</span> ARTWORK</a>
+            <a href="index.html#contact" data-section="contact"><span class="nav-num">06</span> CONTACT</a>
         </nav>
 
+        <div class="nav-status">
+            <span class="nav-status-dot"></span>
+            <span>SYS: ONLINE</span>
+        </div>
     </header>
 
 
