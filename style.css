@@ -54,6 +54,7 @@ html {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    max-width: 100%;
 }
 
 body {
@@ -64,6 +65,7 @@ body {
     line-height: 1.7;
     overflow-x: hidden;
     position: relative;
+    max-width: 100%;
 }
 
 /* Subtle background technical grid */
@@ -72,8 +74,8 @@ body::before {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-image: 
         linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
@@ -770,7 +772,7 @@ nav#nav-links a.active::after {
 /* ================= ABOUT SECTION ================= */
 .about-grid {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
     gap: 60px;
     align-items: start;
 }
@@ -871,8 +873,14 @@ nav#nav-links a.active::after {
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.skills-grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .skill-category-card {
@@ -884,6 +892,8 @@ nav#nav-links a.active::after {
     position: relative;
     display: flex;
     flex-direction: column;
+    min-width: 0;
+    max-width: 100%;
 }
 
 .skill-category-card:hover {
@@ -1391,6 +1401,46 @@ nav#nav-links a.active::after {
     transform: scale(1.15);
 }
 
+/* Home page Digital Sketchbook preview (two pieces, Artwork-page treatment) */
+.home-sketchbook-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+    max-width: 100%;
+    align-items: stretch;
+}
+
+.home-sketchbook-gallery .art-sketchbook-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    max-width: 100%;
+    color: inherit;
+}
+
+.home-sketchbook-gallery .art-image-frame {
+    aspect-ratio: 16 / 10;
+    background: #f3f3f6;
+}
+
+.home-sketchbook-gallery .art-image-frame img {
+    object-fit: contain;
+    object-position: center;
+}
+
+.home-sketchbook-gallery .art-card-caption {
+    gap: 12px;
+}
+
+.home-sketchbook-gallery .art-info-meta {
+    min-width: 0;
+}
+
+.home-sketchbook-gallery .art-expand-hint {
+    flex-shrink: 0;
+}
+
 /* ================= ARTWORK LIGHTBOX MODAL ================= */
 .art-lightbox-overlay {
     display: none;
@@ -1739,8 +1789,9 @@ footer {
         max-width: 100%;
     }
 
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .skills-grid,
+    .skills-grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .project-showcase-entry {
@@ -1804,6 +1855,15 @@ footer {
         gap: 40px;
     }
 
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .social-card:hover {
+        transform: none;
+    }
+
     .skill-inspector-panel {
         grid-template-columns: 1fr;
         gap: 16px;
@@ -1841,8 +1901,24 @@ footer {
         letter-spacing: -0.03em;
     }
 
-    .skills-grid {
-        grid-template-columns: 1fr;
+    .skills-grid,
+    .skills-grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .home-sketchbook-gallery {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .category-card-header {
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .category-card-header h3 {
+        min-width: 0;
+        overflow-wrap: anywhere;
     }
 
     .artwork-editorial-gallery {
@@ -2013,13 +2089,21 @@ footer {
 /* Contact page legacy cards */
 .contact-layout {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     gap: 60px;
     margin-top: 30px;
-    padding: 50px;
+    padding: clamp(24px, 4vw, 50px);
     border: 1px solid var(--border);
     border-radius: 20px;
     background: var(--surface);
+    width: 100%;
+    max-width: 100%;
+}
+
+.contact-intro,
+.contact-socials {
+    min-width: 0;
+    max-width: 100%;
 }
 
 .contact-intro h2 {
@@ -2074,6 +2158,9 @@ footer {
     border: 1px solid var(--border);
     border-radius: 10px;
     transition: all var(--transition-base);
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
 }
 
 .social-card:hover {
@@ -2091,12 +2178,15 @@ footer {
     padding: 6px 10px;
     border-radius: 6px;
     border: 1px solid var(--border);
+    flex-shrink: 0;
 }
 
 .social-info {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    min-width: 0;
+    flex: 1;
 }
 
 .social-name {
@@ -2109,12 +2199,15 @@ footer {
     font-family: var(--font-mono);
     font-size: 11px;
     color: var(--text-dim);
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .social-arrow {
     margin-left: auto;
     color: var(--text-dim);
     transition: all var(--transition-fast);
+    flex-shrink: 0;
 }
 
 .social-card:hover .social-arrow {
@@ -2174,6 +2267,8 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
     border-bottom: 1px solid var(--border);
     padding-bottom: 12px;
     margin-bottom: 16px;
@@ -2214,6 +2309,8 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
     border-top: 1px solid var(--border);
     padding-top: 12px;
     margin-top: 16px;
