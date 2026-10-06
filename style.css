@@ -1770,177 +1770,7 @@ footer {
         opacity: 1 !important;
         transform: none !important;
     }
-}
-
-/* ================= RESPONSIVE MEDIA QUERIES ================= */
-
-/* Laptop / Medium Screens (1024px - 1280px) */
-@media (max-width: 1100px) {
-    .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-
-    .hero-visual {
-        justify-content: flex-start;
-    }
-
-    .interactive-diagram-card {
-        max-width: 100%;
-    }
-
-    .skills-grid,
-    .skills-grid-3 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .project-showcase-entry {
-        grid-template-columns: 1fr;
-        gap: 36px;
-    }
-
-    .artwork-editorial-gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .art-card-featured,
-    .art-card-wide,
-    .art-card-col-4 {
-        grid-column: span 1;
-    }
-
-    .contact-editorial-layout {
-        grid-template-columns: 1fr;
-        gap: 48px;
-    }
-}
-
-/* Tablet (768px - 1023px) */
-@media (max-width: 850px) {
-    .navbar {
-        height: auto;
-        padding: 16px 5vw;
-        flex-wrap: wrap;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    nav#nav-links {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-        padding: 20px 0 10px;
-        border-top: 1px solid var(--border);
-        margin-top: 14px;
-    }
-
-    nav#nav-links.open {
-        display: flex;
-    }
-
-    .nav-status {
-        display: none;
-    }
-
-    .section {
-        padding: 80px 5vw;
-    }
-
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .contact-layout {
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-
-    .social-card:hover {
-        transform: none;
-    }
-
-    .skill-inspector-panel {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .inspector-info-body {
-        border-left: none;
-        padding-left: 0;
-        border-top: 1px solid var(--border);
-        padding-top: 14px;
-    }
-
-    .contact-editorial-layout {
-        padding: 40px 28px;
-    }
-
-    .lightbox-nav-btn {
-        display: none;
-    }
-}
-
-/* Mobile (320px - 767px) */
-@media (max-width: 580px) {
-    .section {
-        padding: 64px 5vw;
-    }
-
-    .hero {
-        padding: 40px 5vw 60px;
-        min-height: auto;
-    }
-
-    .hero h1 {
-        font-size: 38px;
-        letter-spacing: -0.03em;
-    }
-
-    .skills-grid,
-    .skills-grid-3 {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
-    .home-sketchbook-gallery {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 20px;
-    }
-
-    .category-card-header {
-        gap: 12px;
-        align-items: flex-start;
-    }
-
-    .category-card-header h3 {
-        min-width: 0;
-        overflow-wrap: anywhere;
-    }
-
-    .artwork-editorial-gallery {
-        grid-template-columns: 1fr;
-    }
-
-    .project-showcase-entry {
-        padding: 26px 20px;
-    }
-
-    .project-visual-container {
-        padding: 16px;
-    }
-
-    .contact-editorial-layout {
-        padding: 32px 20px;
-    }
-
-    footer {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+    
 }
 
 
@@ -2639,6 +2469,178 @@ main {
     }
 
     .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+/* ================= RESPONSIVE MEDIA QUERIES ================= */
+
+/* Laptop / Medium Screens (1024px - 1280px) */
+@media (max-width: 1100px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .hero-visual {
+        justify-content: flex-start;
+    }
+
+    .interactive-diagram-card {
+        max-width: 100%;
+    }
+
+    .skills-grid,
+    .skills-grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-showcase-entry {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .artwork-editorial-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .art-card-featured,
+    .art-card-wide,
+    .art-card-col-4 {
+        grid-column: span 1;
+    }
+
+    .contact-editorial-layout {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+}
+
+/* Tablet (768px - 1023px) */
+@media (max-width: 850px) {
+    .navbar {
+        height: auto;
+        padding: 16px 5vw;
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav#nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 20px 0 10px;
+        border-top: 1px solid var(--border);
+        margin-top: 14px;
+    }
+
+    nav#nav-links.open {
+        display: flex;
+    }
+
+    .nav-status {
+        display: none;
+    }
+
+    .section {
+        padding: 80px 5vw;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .social-card:hover {
+        transform: none;
+    }
+
+    .skill-inspector-panel {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .inspector-info-body {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--border);
+        padding-top: 14px;
+    }
+
+    .contact-editorial-layout {
+        padding: 40px 28px;
+    }
+
+    .lightbox-nav-btn {
+        display: none;
+    }
+}
+
+/* Mobile (320px - 767px) */
+@media (max-width: 580px) {
+    .section {
+        padding: 64px 5vw;
+    }
+
+    .hero {
+        padding: 40px 5vw 60px;
+        min-height: auto;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+        letter-spacing: -0.03em;
+    }
+
+    .skills-grid,
+    .skills-grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .home-sketchbook-gallery {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .category-card-header {
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .category-card-header h3 {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .artwork-editorial-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .project-showcase-entry {
+        padding: 26px 20px;
+    }
+
+    .project-visual-container {
+        padding: 16px;
+    }
+
+    .contact-editorial-layout {
+        padding: 32px 20px;
+    }
+
+    footer {
         flex-direction: column;
         align-items: flex-start;
     }
