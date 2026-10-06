@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Artwork — JUSWA: Digital illustrations, character designs, and stylization studies painted in Krita.">
+    <title>Artwork — JUSWA</title>
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Subtle Desktop Cursor -->
+    <div class="custom-cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="custom-cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+    <!-- ================= GLOBAL NAVIGATION ================= -->
+    <header class="navbar" id="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-badge">
+                <img src="images/favicon.png" alt="JUSWA Logo">
+            </div>
+            <span class="logo-text">JUSWA<span>.</span></span>
+            <span class="logo-meta">WORKSPACE</span>
+        </a>
+
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false">
+            ☰
+        </button>
+
+        <nav id="nav-links">
+            <a href="index.html" data-page="index"><span class="nav-num">01</span> HOME</a>
+            <a href="about.html" data-page="about"><span class="nav-num">02</span> ABOUT</a>
+            <a href="skills.html" data-page="skills"><span class="nav-num">03</span> SKILLS</a>
+            <a href="projects.html" data-page="projects"><span class="nav-num">04</span> PROJECTS</a>
+            <a href="artwork.html" data-page="artwork" class="active"><span class="nav-num">05</span> ARTWORK</a>
+            <a href="contact.html" data-page="contact"><span class="nav-num">06</span> CONTACT</a>
+        </nav>
+
+        <div class="nav-status">
+            <span class="nav-status-dot"></span>
+            <span>SYS: ONLINE</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- ================= ARTWORK GALLERY HEADER ================= -->
+        <section class="section page-section">
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">05 /</span> CREATIVE GALLERY
+                    </p>
+                    <h2>The digital sketchbook.</h2>
+                    <p class="section-desc">
+                        A focused collection of digital character illustrations, anime studies,
+                        and lighting experiments painted using digital styluses in Krita. Click any piece to inspect in high resolution.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Asymmetric Editorial Sketchbook Gallery -->
+            <div class="artwork-editorial-gallery">
+
+                <!-- ARTWORK 01: SPIDER-PUNK (FEATURED) -->
+                <article class="art-sketchbook-card art-card-featured reveal-on-scroll" 
+                         data-index="0"
+                         data-title="Spider-Punk (Hobie Brown)"
+                         data-medium="Digital Illustration • Halftone &amp; Cel Study"
+                         data-src="images/spiderman.webp">
+                    <div class="art-image-frame">
+                        <img src="images/spiderman.webp" alt="Spider-Punk digital illustration with electric guitar by JUSWA" loading="eager">
+                    </div>
+                    <div class="art-card-caption">
+                        <div class="art-info-meta">
+                            <span class="art-title">Spider-Punk</span>
+                            <span class="art-medium">Dynamic Line &amp; Halftone Study</span>
+                        </div>
+                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                    </div>
+                </article>
+
+                <!-- ARTWORK 02: DAVID & LUCY ON THE MOON (WIDE) -->
+                <article class="art-sketchbook-card art-card-wide reveal-on-scroll" 
+                         data-index="1"
+                         data-title="David &amp; Lucy — To The Moon"
+                         data-medium="Digital Painting • Cyberpunk: Edgerunners Scene Study"
+                         data-src="images/cyberpunk.webp">
+                    <div class="art-image-frame">
+                        <img src="images/cyberpunk.webp" alt="David and Lucy on the moon digital painting by JUSWA" loading="eager">
+                    </div>
+                    <div class="art-card-caption">
+                        <div class="art-info-meta">
+                            <span class="art-title">David &amp; Lucy on the Moon</span>
+                            <span class="art-medium">Atmospheric Scene &amp; Lighting Study</span>
+                        </div>
+                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                    </div>
+                </article>
+
+                <!-- ARTWORK 03: DAVID MARTINEZ -->
+                <article class="art-sketchbook-card art-card-col-4 reveal-on-scroll" 
+                         data-index="2"
+                         data-title="David Martinez"
+                         data-medium="Digital Illustration • Neon Rim Light Study"
+                         data-src="images/david.webp">
+                    <div class="art-image-frame">
+                        <img src="images/david.webp" alt="David Martinez Cyberpunk Edgerunners portrait by JUSWA" loading="lazy">
+                    </div>
+                    <div class="art-card-caption">
+                        <div class="art-info-meta">
+                            <span class="art-title">David Martinez</span>
+                            <span class="art-medium">Neon Edge Lighting &amp; Expression</span>
+                        </div>
+                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                    </div>
+                </article>
+
+                <!-- ARTWORK 04: HYAKKIMARU -->
+                <article class="art-sketchbook-card art-card-col-4 reveal-on-scroll" 
+                         data-index="3"
+                         data-title="Hyakkimaru (Dororo)"
+                         data-medium="Digital Illustration • Motion &amp; Blade Study"
+                         data-src="images/hyakimaru.webp">
+                    <div class="art-image-frame">
+                        <img src="images/hyakimaru.webp" alt="Hyakkimaru action pose digital illustration by JUSWA" loading="lazy">
+                    </div>
+                    <div class="art-card-caption">
+                        <div class="art-info-meta">
+                            <span class="art-title">Hyakkimaru</span>
+                            <span class="art-medium">Action Posing &amp; Blade Velocity</span>
+                        </div>
+                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                    </div>
+                </article>
+
+                <!-- ARTWORK 05: DEKU (IZUKU MIDORIYA) -->
+                <article class="art-sketchbook-card art-card-col-4 reveal-on-scroll" 
+                         data-index="4"
+                         data-title="Izuku Midoriya (Deku)"
+                         data-medium="Digital Illustration • Energy Aura &amp; Shading"
+                         data-src="images/deku.jpg">
+                    <div class="art-image-frame">
+                        <img src="images/deku.jpg" alt="Izuku Midoriya Deku digital illustration by JUSWA" loading="lazy">
+                    </div>
+                    <div class="art-card-caption">
+                        <div class="art-info-meta">
+                            <span class="art-title">Deku</span>
+                            <span class="art-medium">Energy Aura &amp; Perspective Study</span>
+                        </div>
+                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ================= ARTISTIC METHODOLOGY ================= -->
+        <section class="section reveal-on-scroll">
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">05.1 /</span> PROCESS &amp; TOOLS
+                    </p>
+                    <h2>The creative process.</h2>
+                </div>
+            </div>
+
+            <div class="about-grid">
+                <div>
+                    <p class="large-text">
+                        Digital drawing is where discipline meets intuition.
+                    </p>
+                </div>
+                <div>
+                    <p class="section-text">
+                        Every piece begins with gesture sketching and structural anatomy before moving to ink line passes. In Krita, custom brush presets allow blending of cel-shaded highlights with soft color gradients and halftone screen textures.
+                    </p>
+                    <p class="section-text">
+                        Studying character form and lighting under extreme conditions directly informs my frontend user experience thinking — understanding where the eye travels and how contrast guides focus.
+                    </p>
+                    <div style="margin-top:20px;">
+                        <a href="https://www.instagram.com/juswa_draws" target="_blank" rel="noopener noreferrer" class="button secondary">
+                            Follow Art on Instagram (@juswa_draws) ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= ARTWORK LIGHTBOX MODAL ================= -->
+    <div class="art-lightbox-overlay" id="art-lightbox" role="dialog" aria-modal="true" aria-label="Artwork Viewer">
+        <div class="lightbox-content-box">
+            <button class="lightbox-close-btn" id="lightbox-close-btn" aria-label="Close viewer">
+                <span>[ESC] CLOSE</span>
+            </button>
+            <button class="lightbox-nav-btn prev" id="lightbox-prev-btn" aria-label="Previous artwork">‹</button>
+            <button class="lightbox-nav-btn next" id="lightbox-next-btn" aria-label="Next artwork">›</button>
+
+            <div class="lightbox-image-holder">
+                <img src="" alt="" id="lightbox-img">
+            </div>
+
+            <div class="lightbox-caption-bar">
+                <span class="caption-title" id="lightbox-title">Artwork Title</span>
+                <span class="caption-medium" id="lightbox-medium">Digital Illustration</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= GLOBAL FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col footer-col-brand">
+                <a href="index.html" class="footer-logo">
+                    <span class="logo-text">JUSWA<span>.</span></span>
+                </a>
+                <p class="footer-name">Joshua Aquino Lagare</p>
+                <p class="footer-tagline">Computer Engineering • Development • Art</p>
+                <p class="footer-desc">
+                    Building practical technology across software, embedded systems, and IoT with creative discipline and digital art.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">NAVIGATE</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">01 Home</a></li>
+                    <li><a href="about.html">02 About</a></li>
+                    <li><a href="skills.html">03 Skills</a></li>
+                    <li><a href="projects.html">04 Projects</a></li>
+                    <li><a href="artwork.html">05 Artwork</a></li>
+                    <li><a href="contact.html">06 Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">CONNECT</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:joshualagare255@gmail.com">Email ↗</a></li>
+                    <li><a href="https://github.com/Shuwawao" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+                    <li><a href="https://www.instagram.com/juswa_draws" target="_blank" rel="noopener noreferrer">Instagram (Art) ↗</a></li>
+                    <li><a href="https://www.instagram.com/shuwawao" target="_blank" rel="noopener noreferrer">Instagram (Personal) ↗</a></li>
+                    <li><a href="https://www.facebook.com/share/1F1aA2ChW4/" target="_blank" rel="noopener noreferrer">Facebook ↗</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">DISCIPLINES</h4>
+                <ul class="footer-meta-list">
+                    <li><span class="meta-tag">DEV</span> Software Architecture</li>
+                    <li><span class="meta-tag">HARDWARE</span> Embedded &amp; IoT</li>
+                    <li><span class="meta-tag">ART</span> Digital Illustration</li>
+                    <li><span class="meta-tag">DEGREE</span> Computer Engineering</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© <span id="year">2026</span> JUSWA. Built with HTML, CSS &amp; JavaScript.</p>
+            <div class="footer-status-pill">
+                <span class="status-indicator-dot"></span>
+                <span>SYSTEM: ALL SERVICES OPERATIONAL</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

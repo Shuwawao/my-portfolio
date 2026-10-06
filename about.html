@@ -3,26 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-          content="About JUSWA — Computer Engineering student and developer.">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About JUSWA — Joshua Aquino Lagare: Computer Engineering student, developer, and digital artist exploring software, embedded systems, and digital illustration.">
     <title>About — JUSWA</title>
 
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="style.css">
-
     <script src="script.js" defer></script>
 </head>
 
 <body>
 
-    <!-- ================= NAVIGATION ================= -->
+    <!-- Subtle Desktop Cursor -->
+    <div class="custom-cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="custom-cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+    <!-- ================= GLOBAL NAVIGATION ================= -->
     <header class="navbar" id="navbar">
-        <a href="index.html#home" class="logo">
+        <a href="index.html" class="logo">
             <div class="logo-badge">
                 <img src="images/favicon.png" alt="JUSWA Logo">
             </div>
@@ -39,12 +37,12 @@
         </button>
 
         <nav id="nav-links">
-            <a href="index.html#home" data-section="home"><span class="nav-num">01</span> HOME</a>
-            <a href="index.html#about" data-section="about" class="active"><span class="nav-num">02</span> ABOUT</a>
-            <a href="index.html#skills" data-section="skills"><span class="nav-num">03</span> SKILLS</a>
-            <a href="index.html#projects" data-section="projects"><span class="nav-num">04</span> PROJECTS</a>
-            <a href="index.html#artwork" data-section="artwork"><span class="nav-num">05</span> ARTWORK</a>
-            <a href="index.html#contact" data-section="contact"><span class="nav-num">06</span> CONTACT</a>
+            <a href="index.html" data-page="index"><span class="nav-num">01</span> HOME</a>
+            <a href="about.html" data-page="about" class="active"><span class="nav-num">02</span> ABOUT</a>
+            <a href="skills.html" data-page="skills"><span class="nav-num">03</span> SKILLS</a>
+            <a href="projects.html" data-page="projects"><span class="nav-num">04</span> PROJECTS</a>
+            <a href="artwork.html" data-page="artwork"><span class="nav-num">05</span> ARTWORK</a>
+            <a href="contact.html" data-page="contact"><span class="nav-num">06</span> CONTACT</a>
         </nav>
 
         <div class="nav-status">
@@ -53,87 +51,241 @@
         </div>
     </header>
 
-        <!-- ================= ABOUT ================= -->
-
+    <main>
+        <!-- ================= ABOUT HERO & PROFILE ================= -->
         <section class="section page-section">
-
-            <div class="section-heading">
-
-                <p class="eyebrow">
-                    01 / ABOUT
-                </p>
-
-                <h2>
-                    A little about me.
-                </h2>
-
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">02 /</span> BIOGRAPHY &amp; PROFILE
+                    </p>
+                    <h2>A little about me.</h2>
+                    <p class="section-desc">
+                        Bridging engineering rigor with digital creative discipline.
+                    </p>
+                </div>
             </div>
 
-
+            <!-- Profile Overview Split Layout -->
             <div class="about-grid">
 
-                <div>
-
-                    <p class="large-text">
-
-                        I'm a Computer Engineering student
-                        interested in building practical
-                        technology while keeping creativity
-                        at the center of the process.
-
+                <div class="about-narrative">
+                    <p class="about-statement">
+                        I am <span class="accent">Joshua Aquino Lagare</span>, known publicly as <span class="accent">JUSWA</span> — a Computer Engineering student, software developer, and digital artist.
                     </p>
 
+                    <p>
+                        My journey began with a natural curiosity for how systems operate beneath the surface: from raw electrical signals and microcontrollers executing machine code to high-level mobile applications connecting communities across cloud databases.
+                    </p>
+
+                    <p>
+                        Rather than viewing engineering and artistic creativity as separate disciplines, I treat them as complementary lenses. Engineering gives structure, logic, and functional reliability; art gives visual intentionality, empathy, and aesthetic character.
+                    </p>
+
+                    <div style="margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="projects.html" class="button primary">
+                            View Engineering Projects <span class="arrow">→</span>
+                        </a>
+                        <a href="artwork.html" class="button secondary">
+                            View Digital Art
+                        </a>
+                    </div>
                 </div>
 
-
+                <!-- SPECIAL REAL-LIFE PHOTO WITH SCREENTONE -> COLOR REVEAL -->
                 <div>
+                    <div class="photo-reveal-container" id="photo-reveal-container">
+                        <div class="photo-frame-header">
+                            <span class="photo-tag">PORTRAIT // JOSHUA AQUINO LAGARE</span>
+                            <span class="photo-status" id="photo-reveal-status">MODE: SCREENTONE</span>
+                        </div>
 
-                    <p class="section-text">
+                        <div class="photo-reveal-stage" id="photo-reveal-stage" tabindex="0" role="region" aria-label="Interactive portrait with screentone color reveal">
+                            <!-- Layer 1: Stylized Screentone / Halftone Texture -->
+                            <div class="photo-layer photo-layer-screentone" aria-hidden="true">
+                                <img src="images/Joshua-pfp.jfif" alt="Joshua Aquino Lagare stylized screentone portrait" loading="eager">
+                                <div class="screentone-dot-pattern"></div>
+                            </div>
 
-                        My interests range from mobile
-                        application development and embedded
-                        systems to IoT and hardware projects.
+                            <!-- Layer 2: True Color Real-Life Photograph -->
+                            <div class="photo-layer photo-layer-color" id="photo-layer-color">
+                                <img src="images/Joshua-pfp.jfif" alt="Joshua Aquino Lagare real-life photograph" loading="eager">
+                            </div>
 
-                    </p>
+                            <div class="reveal-hint-pill">
+                                <span>HOVER TO REVEAL TRUE COLOR</span>
+                            </div>
+                        </div>
 
-                    <p class="section-text">
-
-                        I enjoy learning by creating projects,
-                        experimenting with technology, and
-                        turning ideas into working systems.
-
-                    </p>
-
-                    <p class="section-text">
-
-                        Through my projects, I aim to combine
-                        technical problem-solving with thoughtful
-                        design and practical functionality.
-
-                    </p>
-
+                        <div class="photo-frame-footer">
+                            <span class="photo-spec">REAL-LIFE PHOTOGRAPH</span>
+                            <button class="mobile-reveal-toggle" id="mobile-reveal-toggle" type="button">
+                                [TAP TO TOGGLE COLOR]
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
             </div>
-
         </section>
 
+        <!-- ================= DETAILED BACKGROUND SECTIONS ================= -->
+        <section class="section reveal-on-scroll">
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">02.1 /</span> FOCUS AREAS
+                    </p>
+                    <h2>What drives my work.</h2>
+                </div>
+            </div>
 
-        <!-- ================= FOOTER ================= -->
+            <div class="skills-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <!-- Software Development -->
+                <div class="skill-category-card">
+                    <div class="category-card-header">
+                        <h3>Software &amp; Mobile</h3>
+                        <span class="cat-code">01</span>
+                    </div>
+                    <p class="section-text" style="font-size:14px;">
+                        I develop mobile and web solutions with an emphasis on maintainable architecture and responsive design. My work on <strong>Synced N</strong> in Kotlin with Android Studio and Firebase demonstrates my focus on solving practical coordination and scheduling problems.
+                    </p>
+                </div>
 
-        <footer>
+                <!-- Embedded Systems & IoT -->
+                <div class="skill-category-card">
+                    <div class="category-card-header">
+                        <h3>Embedded &amp; IoT</h3>
+                        <span class="cat-code">02</span>
+                    </div>
+                    <p class="section-text" style="font-size:14px;">
+                        Physical computing is central to my Computer Engineering studies. Working with <strong>Arduino Nano</strong> and <strong>ESP32</strong> systems, I integrate ultrasonic distance sensors, RTC time modules, and OLED displays to build assistive technologies like the Smart Cane and Smart Medication System.
+                    </p>
+                </div>
 
-            <p>
+                <!-- Digital Art & Illustration -->
+                <div class="skill-category-card">
+                    <div class="category-card-header">
+                        <h3>Digital Art</h3>
+                        <span class="cat-code">03</span>
+                    </div>
+                    <p class="section-text" style="font-size:14px;">
+                        Outside code and hardware circuits, I paint digital character illustrations in <strong>Krita</strong>. Studying anatomy, perspective, neon rim-lighting, and dynamic composition feeds directly back into my understanding of visual hierarchy and user interface design.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-                © <span id="year"></span> JUSWA.
-                Built with HTML, CSS & JavaScript.
+        <!-- ================= TECHNICAL DOSSIER ================= -->
+        <section class="section reveal-on-scroll">
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">02.2 /</span> SPEC SHEET
+                    </p>
+                    <h2>Workspace dossier.</h2>
+                </div>
+            </div>
 
-            </p>
+            <div class="about-grid">
+                <div class="about-dossier" style="grid-column: 1 / -1;">
+                    <div class="dossier-header">
+                        <span>ENGINEERING PROFILE &amp; CORE METADATA</span>
+                        <span>CE // DEV // ART</span>
+                    </div>
 
-        </footer>
+                    <div class="dossier-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+                        <div class="dossier-row">
+                            <span class="dossier-label">LEGAL NAME</span>
+                            <span class="dossier-value">Joshua Aquino Lagare</span>
+                        </div>
 
+                        <div class="dossier-row">
+                            <span class="dossier-label">PUBLIC MONIKER</span>
+                            <span class="dossier-value">JUSWA</span>
+                        </div>
+
+                        <div class="dossier-row">
+                            <span class="dossier-label">DEGREE &amp; FIELD</span>
+                            <span class="dossier-value">Computer Engineering Student</span>
+                        </div>
+
+                        <div class="dossier-row">
+                            <span class="dossier-label">ACTIVE PLATFORMS</span>
+                            <span class="dossier-value">Android (Kotlin), Arduino, ESP32, Web</span>
+                        </div>
+
+                        <div class="dossier-row">
+                            <span class="dossier-label">CREATIVE SOFTWARE</span>
+                            <span class="dossier-value">Krita (Digital Painting &amp; Illustration)</span>
+                        </div>
+
+                        <div class="dossier-row">
+                            <span class="dossier-label">HARDWARE PERIPHERALS</span>
+                            <span class="dossier-value">OLED Displays, Ultrasonic, RTC, I²C Modules</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <!-- ================= GLOBAL FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col footer-col-brand">
+                <a href="index.html" class="footer-logo">
+                    <span class="logo-text">JUSWA<span>.</span></span>
+                </a>
+                <p class="footer-name">Joshua Aquino Lagare</p>
+                <p class="footer-tagline">Computer Engineering • Development • Art</p>
+                <p class="footer-desc">
+                    Building practical technology across software, embedded systems, and IoT with creative discipline and digital art.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">NAVIGATE</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">01 Home</a></li>
+                    <li><a href="about.html">02 About</a></li>
+                    <li><a href="skills.html">03 Skills</a></li>
+                    <li><a href="projects.html">04 Projects</a></li>
+                    <li><a href="artwork.html">05 Artwork</a></li>
+                    <li><a href="contact.html">06 Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">CONNECT</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:joshualagare255@gmail.com">Email ↗</a></li>
+                    <li><a href="https://github.com/Shuwawao" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+                    <li><a href="https://www.instagram.com/juswa_draws" target="_blank" rel="noopener noreferrer">Instagram (Art) ↗</a></li>
+                    <li><a href="https://www.instagram.com/shuwawao" target="_blank" rel="noopener noreferrer">Instagram (Personal) ↗</a></li>
+                    <li><a href="https://www.facebook.com/share/1F1aA2ChW4/" target="_blank" rel="noopener noreferrer">Facebook ↗</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">DISCIPLINES</h4>
+                <ul class="footer-meta-list">
+                    <li><span class="meta-tag">DEV</span> Software Architecture</li>
+                    <li><span class="meta-tag">HARDWARE</span> Embedded &amp; IoT</li>
+                    <li><span class="meta-tag">ART</span> Digital Illustration</li>
+                    <li><span class="meta-tag">DEGREE</span> Computer Engineering</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© <span id="year">2026</span> JUSWA. Built with HTML, CSS &amp; JavaScript.</p>
+            <div class="footer-status-pill">
+                <span class="status-indicator-dot"></span>
+                <span>SYSTEM: ALL SERVICES OPERATIONAL</span>
+            </div>
+        </div>
+    </footer>
 
 </body>
 

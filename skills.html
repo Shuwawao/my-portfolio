@@ -3,26 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-          content="JUSWA — Development, mobile, cloud, hardware, and IoT skills.">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Skills — JUSWA: Technical capabilities across software development, mobile platforms, embedded hardware, IoT, and creative design.">
     <title>Skills — JUSWA</title>
 
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="style.css">
-
     <script src="script.js" defer></script>
 </head>
 
 <body>
 
-    <!-- ================= NAVIGATION ================= -->
+    <!-- Subtle Desktop Cursor -->
+    <div class="custom-cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="custom-cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+    <!-- ================= GLOBAL NAVIGATION ================= -->
     <header class="navbar" id="navbar">
-        <a href="index.html#home" class="logo">
+        <a href="index.html" class="logo">
             <div class="logo-badge">
                 <img src="images/favicon.png" alt="JUSWA Logo">
             </div>
@@ -39,12 +37,12 @@
         </button>
 
         <nav id="nav-links">
-            <a href="index.html#home" data-section="home"><span class="nav-num">01</span> HOME</a>
-            <a href="index.html#about" data-section="about"><span class="nav-num">02</span> ABOUT</a>
-            <a href="index.html#skills" data-section="skills" class="active"><span class="nav-num">03</span> SKILLS</a>
-            <a href="index.html#projects" data-section="projects"><span class="nav-num">04</span> PROJECTS</a>
-            <a href="index.html#artwork" data-section="artwork"><span class="nav-num">05</span> ARTWORK</a>
-            <a href="index.html#contact" data-section="contact"><span class="nav-num">06</span> CONTACT</a>
+            <a href="index.html" data-page="index"><span class="nav-num">01</span> HOME</a>
+            <a href="about.html" data-page="about"><span class="nav-num">02</span> ABOUT</a>
+            <a href="skills.html" data-page="skills" class="active"><span class="nav-num">03</span> SKILLS</a>
+            <a href="projects.html" data-page="projects"><span class="nav-num">04</span> PROJECTS</a>
+            <a href="artwork.html" data-page="artwork"><span class="nav-num">05</span> ARTWORK</a>
+            <a href="contact.html" data-page="contact"><span class="nav-num">06</span> CONTACT</a>
         </nav>
 
         <div class="nav-status">
@@ -53,127 +51,242 @@
         </div>
     </header>
 
-        <!-- ================= SKILLS ================= -->
-
+    <main>
+        <!-- ================= SKILLS HEADER ================= -->
         <section class="section page-section">
-
-            <div class="section-heading">
-
-                <p class="eyebrow">
-                    02 / SKILLS
-                </p>
-
-                <h2>
-                    Things I work with.
-                </h2>
-
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">03 /</span> CAPABILITIES &amp; TOOLBOX
+                    </p>
+                    <h2>Technical toolbox.</h2>
+                    <p class="section-desc">
+                        A structured breakdown of languages, platforms, hardware microcontrollers,
+                        and creative digital tools I work with across engineering and art.
+                    </p>
+                </div>
             </div>
 
+            <div class="skills-toolbox-container">
+                <div class="skills-grid">
 
-            <div class="skills-grid">
+                    <!-- CATEGORY 1: DEVELOPMENT -->
+                    <div class="skill-category-card">
+                        <div class="category-card-header">
+                            <h3>Development</h3>
+                            <span class="cat-code">01_DEV</span>
+                        </div>
+                        <div class="skill-items-list">
+                            <div class="skill-item-pill" data-skill="HTML" data-cat="Development" data-project="Personal Portfolio" data-desc="Semantic markup, accessible structure, and clean web foundations.">
+                                <span>HTML</span>
+                                <span class="pill-tag">MARKUP</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="CSS" data-cat="Development" data-project="Personal Portfolio" data-desc="Modern layout architecture, responsive design tokens, and smooth CSS transforms.">
+                                <span>CSS</span>
+                                <span class="pill-tag">STYLE</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="JavaScript" data-cat="Development" data-project="Personal Portfolio" data-desc="Vanilla JS, DOM manipulation, asynchronous fetching, and micro-interactions.">
+                                <span>JavaScript</span>
+                                <span class="pill-tag">LOGIC</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="Kotlin" data-cat="Development" data-project="Synced N" data-desc="Statically-typed language powering modern Android mobile application architecture.">
+                                <span>Kotlin</span>
+                                <span class="pill-tag">APP</span>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- CATEGORY 2: TOOLS & CLOUD -->
+                    <div class="skill-category-card">
+                        <div class="category-card-header">
+                            <h3>Tools</h3>
+                            <span class="cat-code">02_TOOLS</span>
+                        </div>
+                        <div class="skill-items-list">
+                            <div class="skill-item-pill" data-skill="Android Studio" data-cat="Tools" data-project="Synced N" data-desc="Official IDE for Android development, UI building, emulator debugging, and Gradle builds.">
+                                <span>Android Studio</span>
+                                <span class="pill-tag">IDE</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="Firebase" data-cat="Tools" data-project="Synced N" data-desc="Backend-as-a-service providing real-time database sync, auth, and cloud storage.">
+                                <span>Firebase</span>
+                                <span class="pill-tag">BACKEND</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="Git" data-cat="Tools" data-project="All Projects" data-desc="Distributed version control, branch management, and collaborative workflow.">
+                                <span>Git</span>
+                                <span class="pill-tag">VCS</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="GitHub" data-cat="Tools" data-project="Shuwawao" data-desc="Repository hosting, issue tracking, continuous integration, and open source.">
+                                <span>GitHub</span>
+                                <span class="pill-tag">HOSTING</span>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- DEVELOPMENT -->
+                    <!-- CATEGORY 3: EMBEDDED / IOT -->
+                    <div class="skill-category-card">
+                        <div class="category-card-header">
+                            <h3>Embedded / IoT</h3>
+                            <span class="cat-code">03_HARDWARE</span>
+                        </div>
+                        <div class="skill-items-list">
+                            <div class="skill-item-pill" data-skill="Arduino" data-cat="Embedded / IoT" data-project="Smart Assistive Cane" data-desc="Microcontroller platform programmed in C/C++ for sensor reading, timers, and actuators.">
+                                <span>Arduino</span>
+                                <span class="pill-tag">MCU</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="ESP32" data-cat="Embedded / IoT" data-project="Smart Medication System" data-desc="Wi-Fi and dual-mode Bluetooth microcontroller used for IoT telemetry and wireless alerts.">
+                                <span>ESP32</span>
+                                <span class="pill-tag">SOC/WIFI</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="Sensors" data-cat="Embedded / IoT" data-project="Smart Assistive Cane" data-desc="Ultrasonic distance sensors, motion detectors, ambient light sensors, and RTC modules.">
+                                <span>Sensors</span>
+                                <span class="pill-tag">INPUT</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="I²C" data-cat="Embedded / IoT" data-project="Smart Assistive Cane" data-desc="Two-wire synchronous serial protocol for connecting OLED displays and peripheral sensor ICs.">
+                                <span>I²C</span>
+                                <span class="pill-tag">BUS</span>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="skill-category">
-
-                    <h3>
-                        Development
-                    </h3>
-
-                    <div class="skill-list">
-
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>Kotlin</span>
-
+                    <!-- CATEGORY 4: CREATIVE -->
+                    <div class="skill-category-card">
+                        <div class="category-card-header">
+                            <h3>Creative</h3>
+                            <span class="cat-code">04_ART</span>
+                        </div>
+                        <div class="skill-items-list">
+                            <div class="skill-item-pill" data-skill="Krita" data-cat="Creative" data-project="Digital Sketchbook" data-desc="Professional open-source raster painting suite used for digital character art and illustration.">
+                                <span>Krita</span>
+                                <span class="pill-tag">STUDIO</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="Digital Art" data-cat="Creative" data-project="Digital Sketchbook" data-desc="Digital illustration focusing on stylized lighting, color theory, portraits, and dynamic posing.">
+                                <span>Digital Art</span>
+                                <span class="pill-tag">CRAFT</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="Illustration" data-cat="Creative" data-project="Digital Sketchbook" data-desc="Character design, anime/manga aesthetic studies, cel shading, and ink linework.">
+                                <span>Illustration</span>
+                                <span class="pill-tag">ART</span>
+                            </div>
+                            <div class="skill-item-pill" data-skill="UI Design" data-cat="Creative" data-project="Synced N & Web" data-desc="Interface wireframing, layout hierarchy, typographic systems, and user interaction design.">
+                                <span>UI Design</span>
+                                <span class="pill-tag">DESIGN</span>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
 
-
-                <!-- MOBILE & CLOUD -->
-
-                <div class="skill-category">
-
-                    <h3>
-                        Mobile & Cloud
-                    </h3>
-
-                    <div class="skill-list">
-
-                        <span>Android Studio</span>
-                        <span>Firebase</span>
-                        <span>Git</span>
-                        <span>GitHub</span>
-
+                <!-- LIVE INSPECTOR PANEL (UPDATES ON HOVER) -->
+                <div class="skill-inspector-panel" id="skill-inspector">
+                    <div class="inspector-target-title">
+                        <span class="inspector-meta-label">TOOL INSPECTOR</span>
+                        <span class="inspector-name" id="insp-name">ESP32</span>
                     </div>
-
-                </div>
-
-
-                <!-- HARDWARE & IOT -->
-
-                <div class="skill-category">
-
-                    <h3>
-                        Hardware & IoT
-                    </h3>
-
-                    <div class="skill-list">
-
-                        <span>Arduino</span>
-                        <span>ESP32</span>
-                        <span>Sensors</span>
-                        <span>I²C</span>
-
+                    <div class="inspector-info-body">
+                        <p class="inspector-desc" id="insp-desc">
+                            Wi-Fi and dual-mode Bluetooth microcontroller used for IoT telemetry and wireless wearable communication.
+                        </p>
+                        <div class="inspector-project-meta">
+                            <span>CATEGORY: <strong id="insp-cat">EMBEDDED / IOT</strong></span>
+                            <span>•</span>
+                            <span>USED IN: <strong id="insp-project">SMART MEDICATION SYSTEM</strong></span>
+                        </div>
                     </div>
-
-                </div>
-
-
-                <!-- CREATIVE -->
-
-                <div class="skill-category">
-
-                    <h3>
-                        Creative
-                    </h3>
-
-                    <div class="skill-list">
-
-                        <span>UI Design</span>
-                        <span>Figma</span>
-                        <span>Krita</span>
-                        <span>Digital Design</span>
-
+                    <div class="inspector-hint">
+                        <span class="telemetry-item">STATUS: VERIFIED</span>
                     </div>
-
                 </div>
-
-
             </div>
-
         </section>
 
+        <!-- ================= METHODOLOGY & INTEGRATION ================= -->
+        <section class="section reveal-on-scroll">
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">03.1 /</span> METHODOLOGY
+                    </p>
+                    <h2>How these tools connect.</h2>
+                </div>
+            </div>
 
+            <div class="about-grid">
+                <div>
+                    <p class="large-text">
+                        A multi-layered stack from hardware pins to cloud databases and user interfaces.
+                    </p>
+                </div>
+                <div>
+                    <p class="section-text">
+                        In projects like the <strong>Smart Assistive Cane</strong>, the C/C++ firmware reads sensor signals through analog and I²C interfaces, while managing timing through hardware timers.
+                    </p>
+                    <p class="section-text">
+                        In mobile projects like <strong>Synced N</strong>, Kotlin handles Android lifecycle management and data binding while Firebase delivers live synchronization for worship lineups.
+                    </p>
+                    <a href="projects.html" class="button primary" style="margin-top:10px;">
+                        See Project Implementations <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <!-- ================= GLOBAL FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col footer-col-brand">
+                <a href="index.html" class="footer-logo">
+                    <span class="logo-text">JUSWA<span>.</span></span>
+                </a>
+                <p class="footer-name">Joshua Aquino Lagare</p>
+                <p class="footer-tagline">Computer Engineering • Development • Art</p>
+                <p class="footer-desc">
+                    Building practical technology across software, embedded systems, and IoT with creative discipline and digital art.
+                </p>
+            </div>
 
-    <!-- ================= FOOTER ================= -->
+            <div class="footer-col">
+                <h4 class="footer-heading">NAVIGATE</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">01 Home</a></li>
+                    <li><a href="about.html">02 About</a></li>
+                    <li><a href="skills.html">03 Skills</a></li>
+                    <li><a href="projects.html">04 Projects</a></li>
+                    <li><a href="artwork.html">05 Artwork</a></li>
+                    <li><a href="contact.html">06 Contact</a></li>
+                </ul>
+            </div>
 
-    <footer>
+            <div class="footer-col">
+                <h4 class="footer-heading">CONNECT</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:joshualagare255@gmail.com">Email ↗</a></li>
+                    <li><a href="https://github.com/Shuwawao" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+                    <li><a href="https://www.instagram.com/juswa_draws" target="_blank" rel="noopener noreferrer">Instagram (Art) ↗</a></li>
+                    <li><a href="https://www.instagram.com/shuwawao" target="_blank" rel="noopener noreferrer">Instagram (Personal) ↗</a></li>
+                    <li><a href="https://www.facebook.com/share/1F1aA2ChW4/" target="_blank" rel="noopener noreferrer">Facebook ↗</a></li>
+                </ul>
+            </div>
 
-        <p>
+            <div class="footer-col">
+                <h4 class="footer-heading">DISCIPLINES</h4>
+                <ul class="footer-meta-list">
+                    <li><span class="meta-tag">DEV</span> Software Architecture</li>
+                    <li><span class="meta-tag">HARDWARE</span> Embedded &amp; IoT</li>
+                    <li><span class="meta-tag">ART</span> Digital Illustration</li>
+                    <li><span class="meta-tag">DEGREE</span> Computer Engineering</li>
+                </ul>
+            </div>
+        </div>
 
-            © <span id="year"></span> JUSWA.
-            Built with HTML, CSS & JavaScript.
-
-        </p>
-
+        <div class="footer-bottom">
+            <p>© <span id="year">2026</span> JUSWA. Built with HTML, CSS &amp; JavaScript.</p>
+            <div class="footer-status-pill">
+                <span class="status-indicator-dot"></span>
+                <span>SYSTEM: ALL SERVICES OPERATIONAL</span>
+            </div>
+        </div>
     </footer>
-
 
 </body>
 

@@ -3,15 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <meta
-        name="description"
-        content="Contact JUSWA — Computer Engineering student and developer."
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact JUSWA — Joshua Aquino Lagare: Computer Engineering student, developer, and digital artist. Get in touch for software, hardware, or art collaborations.">
     <title>Contact — JUSWA</title>
 
     <link rel="icon" type="image/png" href="images/favicon.png">
@@ -21,9 +14,13 @@
 
 <body>
 
-    <!-- ================= NAVIGATION ================= -->
+    <!-- Subtle Desktop Cursor -->
+    <div class="custom-cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="custom-cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+    <!-- ================= GLOBAL NAVIGATION ================= -->
     <header class="navbar" id="navbar">
-        <a href="index.html#home" class="logo">
+        <a href="index.html" class="logo">
             <div class="logo-badge">
                 <img src="images/favicon.png" alt="JUSWA Logo">
             </div>
@@ -40,12 +37,12 @@
         </button>
 
         <nav id="nav-links">
-            <a href="index.html#home" data-section="home"><span class="nav-num">01</span> HOME</a>
-            <a href="index.html#about" data-section="about"><span class="nav-num">02</span> ABOUT</a>
-            <a href="index.html#skills" data-section="skills"><span class="nav-num">03</span> SKILLS</a>
-            <a href="index.html#projects" data-section="projects"><span class="nav-num">04</span> PROJECTS</a>
-            <a href="index.html#artwork" data-section="artwork"><span class="nav-num">05</span> ARTWORK</a>
-            <a href="index.html#contact" data-section="contact" class="active"><span class="nav-num">06</span> CONTACT</a>
+            <a href="index.html" data-page="index"><span class="nav-num">01</span> HOME</a>
+            <a href="about.html" data-page="about"><span class="nav-num">02</span> ABOUT</a>
+            <a href="skills.html" data-page="skills"><span class="nav-num">03</span> SKILLS</a>
+            <a href="projects.html" data-page="projects"><span class="nav-num">04</span> PROJECTS</a>
+            <a href="artwork.html" data-page="artwork"><span class="nav-num">05</span> ARTWORK</a>
+            <a href="contact.html" data-page="contact" class="active"><span class="nav-num">06</span> CONTACT</a>
         </nav>
 
         <div class="nav-status">
@@ -54,144 +51,156 @@
         </div>
     </header>
 
-   
-    <!-- ================= CONTACT ================= -->
-        <section class="section page-section contact">
-
-            <div class="section-heading">
-                <p class="eyebrow">04 / CONTACT</p>
-                <h2>Let's connect.</h2>
+    <main>
+        <!-- ================= CONTACT HERO ================= -->
+        <section class="section page-section">
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">06 /</span> COMMUNICATION &amp; NETWORK
+                    </p>
+                    <h2>Let's connect.</h2>
+                    <p class="section-desc">
+                        Have a project idea, embedded hardware inquiry, software collaboration,
+                        or just want to talk about engineering and digital art? My inbox is always open.
+                    </p>
+                </div>
             </div>
 
-            <div class="contact-layout">
+            <div class="contact-editorial-layout reveal-on-scroll">
+                <div class="contact-left-col">
+                    <div class="contact-heading-wrap">
+                        <h2>
+                            Ready to create<br>
+                            <span class="accent">together?</span>
+                        </h2>
+                    </div>
 
-                <div class="contact-intro">
-
-                    <h2>
-                        Have a project or idea?
-                        <span>Let's talk.</span>
-                    </h2>
-
-                    <p class="section-text">
-                        Whether it's a development project, embedded
-                        system, collaboration, or just a conversation
-                        about technology, feel free to reach out.
+                    <p class="contact-intro-desc">
+                        Whether it's discussing mobile architectures, IoT microcontrollers,
+                        assistive systems, or creative illustration projects — feel free to drop a line anytime.
                     </p>
 
-                    <a
-                        href="mailto:joshualagare255@gmail.com"
-                        class="contact-email">
+                    <a href="mailto:joshualagare255@gmail.com" class="direct-email-button">
                         <span>joshualagare255@gmail.com</span>
-                        <span class="email-arrow">↗</span>
+                        <span class="mail-arrow" aria-hidden="true">↗</span>
                     </a>
-
                 </div>
 
-
-                <div class="contact-socials">
-
-                    <p class="social-label">
-                        FIND ME ONLINE
-                    </p>
-
-
-                    <a
-                        href="https://github.com/Shuwawao"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="social-card">
-
-                        <div class="social-icon">
-                            GH
+                <div class="contact-right-col">
+                    <div class="social-network-list">
+                        <div class="social-network-header">
+                            <span>VERIFIED CHANNELS</span>
                         </div>
 
-                        <div class="social-info">
-                            <span class="social-name">
-                                GitHub
-                            </span>
+                        <!-- GITHUB -->
+                        <a href="https://github.com/Shuwawao" target="_blank" rel="noopener noreferrer" class="social-instrument-link">
+                            <div class="link-left">
+                                <span class="social-tag-code">GH</span>
+                                <div class="social-name-meta">
+                                    <span class="name">GitHub</span>
+                                    <span class="handle">@Shuwawao</span>
+                                </div>
+                            </div>
+                            <span class="social-arrow-dir">↗</span>
+                        </a>
 
-                            <span class="social-handle">
-                                @Shuwawao
-                            </span>
-                        </div>
+                        <!-- INSTAGRAM ART -->
+                        <a href="https://www.instagram.com/juswa_draws" target="_blank" rel="noopener noreferrer" class="social-instrument-link">
+                            <div class="link-left">
+                                <span class="social-tag-code">IG</span>
+                                <div class="social-name-meta">
+                                    <span class="name">Instagram · Art</span>
+                                    <span class="handle">@juswa_draws</span>
+                                </div>
+                            </div>
+                            <span class="social-arrow-dir">↗</span>
+                        </a>
 
-                        <span class="social-arrow">
-                            ↗
-                        </span>
+                        <!-- INSTAGRAM PERSONAL -->
+                        <a href="https://www.instagram.com/shuwawao" target="_blank" rel="noopener noreferrer" class="social-instrument-link">
+                            <div class="link-left">
+                                <span class="social-tag-code">IG</span>
+                                <div class="social-name-meta">
+                                    <span class="name">Instagram · Personal</span>
+                                    <span class="handle">@shuwawao</span>
+                                </div>
+                            </div>
+                            <span class="social-arrow-dir">↗</span>
+                        </a>
 
-                    </a>
-
-
-                    <a
-                        href="https://www.instagram.com/shuwawao"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="social-card">
-
-                        <div class="social-icon">
-                            IG
-                        </div>
-
-                        <div class="social-info">
-                            <span class="social-name">
-                                Instagram
-                            </span>
-
-                            <span class="social-handle">
-                                @shuwawao
-                            </span>
-                        </div>
-
-                        <span class="social-arrow">
-                            ↗
-                        </span>
-
-                    </a>
-
-
-                    <a
-                        href="https://www.facebook.com/share/1F1aA2ChW4/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="social-card">
-
-                        <div class="social-icon">
-                            FB
-                        </div>
-
-                        <div class="social-info">
-                            <span class="social-name">
-                                Facebook
-                            </span>
-
-                            <span class="social-handle">
-                                JUSWA
-                            </span>
-                        </div>
-
-                        <span class="social-arrow">
-                            ↗
-                        </span>
-
-                    </a>
-
+                        <!-- FACEBOOK -->
+                        <a href="https://www.facebook.com/share/1F1aA2ChW4/" target="_blank" rel="noopener noreferrer" class="social-instrument-link">
+                            <div class="link-left">
+                                <span class="social-tag-code">FB</span>
+                                <div class="social-name-meta">
+                                    <span class="name">Facebook</span>
+                                    <span class="handle">JUSWA</span>
+                                </div>
+                            </div>
+                            <span class="social-arrow-dir">↗</span>
+                        </a>
+                    </div>
                 </div>
-
             </div>
-
         </section>
-
     </main>
 
+    <!-- ================= GLOBAL FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col footer-col-brand">
+                <a href="index.html" class="footer-logo">
+                    <span class="logo-text">JUSWA<span>.</span></span>
+                </a>
+                <p class="footer-name">Joshua Aquino Lagare</p>
+                <p class="footer-tagline">Computer Engineering • Development • Art</p>
+                <p class="footer-desc">
+                    Building practical technology across software, embedded systems, and IoT with creative discipline and digital art.
+                </p>
+            </div>
 
-    <!-- Footer -->
-    <footer>
+            <div class="footer-col">
+                <h4 class="footer-heading">NAVIGATE</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">01 Home</a></li>
+                    <li><a href="about.html">02 About</a></li>
+                    <li><a href="skills.html">03 Skills</a></li>
+                    <li><a href="projects.html">04 Projects</a></li>
+                    <li><a href="artwork.html">05 Artwork</a></li>
+                    <li><a href="contact.html">06 Contact</a></li>
+                </ul>
+            </div>
 
-        <p>
-            © <span id="year"></span> JUSWA.
-            Built with HTML, CSS & JavaScript.
-        </p>
+            <div class="footer-col">
+                <h4 class="footer-heading">CONNECT</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:joshualagare255@gmail.com">Email ↗</a></li>
+                    <li><a href="https://github.com/Shuwawao" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+                    <li><a href="https://www.instagram.com/juswa_draws" target="_blank" rel="noopener noreferrer">Instagram (Art) ↗</a></li>
+                    <li><a href="https://www.instagram.com/shuwawao" target="_blank" rel="noopener noreferrer">Instagram (Personal) ↗</a></li>
+                    <li><a href="https://www.facebook.com/share/1F1aA2ChW4/" target="_blank" rel="noopener noreferrer">Facebook ↗</a></li>
+                </ul>
+            </div>
 
+            <div class="footer-col">
+                <h4 class="footer-heading">DISCIPLINES</h4>
+                <ul class="footer-meta-list">
+                    <li><span class="meta-tag">DEV</span> Software Architecture</li>
+                    <li><span class="meta-tag">HARDWARE</span> Embedded &amp; IoT</li>
+                    <li><span class="meta-tag">ART</span> Digital Illustration</li>
+                    <li><span class="meta-tag">DEGREE</span> Computer Engineering</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© <span id="year">2026</span> JUSWA. Built with HTML, CSS &amp; JavaScript.</p>
+            <div class="footer-status-pill">
+                <span class="status-indicator-dot"></span>
+                <span>SYSTEM: ALL SERVICES OPERATIONAL</span>
+            </div>
+        </div>
     </footer>
 
 </body>

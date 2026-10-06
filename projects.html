@@ -3,28 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <meta
-        name="description"
-        content="JUSWA — Projects in software development, embedded systems, and IoT."
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projects — JUSWA: Real software applications, embedded systems, and IoT prototypes built with Kotlin, Arduino, and ESP32.">
     <title>Projects — JUSWA</title>
 
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="style.css">
-
     <script src="script.js" defer></script>
 </head>
 
 <body>
 
-    <!-- ================= NAVIGATION ================= -->
+    <!-- Subtle Desktop Cursor -->
+    <div class="custom-cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="custom-cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+    <!-- ================= GLOBAL NAVIGATION ================= -->
     <header class="navbar" id="navbar">
-        <a href="index.html#home" class="logo">
+        <a href="index.html" class="logo">
             <div class="logo-badge">
                 <img src="images/favicon.png" alt="JUSWA Logo">
             </div>
@@ -41,12 +37,12 @@
         </button>
 
         <nav id="nav-links">
-            <a href="index.html#home" data-section="home"><span class="nav-num">01</span> HOME</a>
-            <a href="index.html#about" data-section="about"><span class="nav-num">02</span> ABOUT</a>
-            <a href="index.html#skills" data-section="skills"><span class="nav-num">03</span> SKILLS</a>
-            <a href="index.html#projects" data-section="projects" class="active"><span class="nav-num">04</span> PROJECTS</a>
-            <a href="index.html#artwork" data-section="artwork"><span class="nav-num">05</span> ARTWORK</a>
-            <a href="index.html#contact" data-section="contact"><span class="nav-num">06</span> CONTACT</a>
+            <a href="index.html" data-page="index"><span class="nav-num">01</span> HOME</a>
+            <a href="about.html" data-page="about"><span class="nav-num">02</span> ABOUT</a>
+            <a href="skills.html" data-page="skills"><span class="nav-num">03</span> SKILLS</a>
+            <a href="projects.html" data-page="projects" class="active"><span class="nav-num">04</span> PROJECTS</a>
+            <a href="artwork.html" data-page="artwork"><span class="nav-num">05</span> ARTWORK</a>
+            <a href="contact.html" data-page="contact"><span class="nav-num">06</span> CONTACT</a>
         </nav>
 
         <div class="nav-status">
@@ -55,188 +51,261 @@
         </div>
     </header>
 
-    <!-- ================= PROJECTS ================= -->
-
     <main>
-
+        <!-- ================= PROJECTS HEADER ================= -->
         <section class="section page-section">
-
-            <div class="section-heading">
-
-                <p class="eyebrow">
-                    03 / PROJECTS
-                </p>
-
-                <h2>
-                    Things I've been building.
-                </h2>
-
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">04 /</span> PROOF OF WORK
+                    </p>
+                    <h2>Things I've been building.</h2>
+                    <p class="section-desc">
+                        Engineering prototypes and software systems solving real scheduling,
+                        assistive mobility, and medication coordination problems.
+                    </p>
+                </div>
             </div>
 
+            <div class="projects-editorial-list">
 
-            <div class="projects-grid">
-
-
-                <!-- ================= PROJECT 1 ================= -->
-
-                <article class="project-card">
-
-                    <div class="project-image">
-
-                        <div class="image-placeholder">
-                            01
+                <!-- PROJECT 01: SYNCED N -->
+                <article class="project-showcase-entry reveal-on-scroll">
+                    <div class="project-entry-details">
+                        <div class="project-meta-top">
+                            <span class="project-serial">01</span>
+                            <span class="project-type-tag">MOBILE APPLICATION</span>
                         </div>
-
-                    </div>
-
-                    <div class="project-content">
-
-                        <p class="project-type">
-                            MOBILE APPLICATION
+                        <h3 class="project-entry-title">Synced N</h3>
+                        <p class="project-entry-subtitle">
+                            Church Music Ministry Schedule &amp; Lineup Management System
                         </p>
-
-                        <h3>
-                            Synced N
-                        </h3>
-
-                        <p>
-                            A church music ministry scheduling and
-                            lineup management system designed to
-                            organize members, worship teams,
-                            schedules, song lineups, rehearsals,
-                            and notifications.
+                        <p class="project-entry-desc">
+                            A mobile application designed to centralize worship ministry operations. It organizes member availability, rehearsal lineups, song assignments, musical keys, chords, and service schedules into one synchronized cloud system.
                         </p>
-
-                        <div class="project-tags">
-
-                            <span>Kotlin</span>
-                            <span>Firebase</span>
-                            <span>Android</span>
-
+                        <div class="project-tech-tags">
+                            <span class="project-tech-tag">Kotlin</span>
+                            <span class="project-tech-tag">Firebase</span>
+                            <span class="project-tech-tag">Android Studio</span>
+                            <span class="project-tech-tag">UI/UX Design</span>
                         </div>
-
-                        <a 
-                        href="synced-n.html" class="project-link">
-                         View Project →
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- ================= PROJECT 2 ================= -->
-
-                <article class="project-card">
-
-                    <div class="project-image">
-
-                        <div class="image-placeholder">
-                            02
-                        </div>
-
-                    </div>
-
-                    <div class="project-content">
-
-                        <p class="project-type">
-                            EMBEDDED SYSTEM
-                        </p>
-
-                        <h3>
-                            Smart Assistive Cane
-                        </h3>
-
-                        <p>
-                            An Arduino-based assistive cane combining
-                            sensors, reminders, display output,
-                            lighting, and safety features to support
-                            everyday mobility.
-                        </p>
-
-                        <div class="project-tags">
-
-                            <span>Arduino</span>
-                            <span>OLED</span>
-                            <span>Sensors</span>
-
-                        </div>
-
-                            <a
-                                href="smart-cane.html" class="project-link">
-                                View Project →
+                        <div class="project-action-row">
+                            <a href="synced-n.html" class="project-link-primary">
+                                View Case Study <span class="arrow">→</span>
                             </a>
-
+                        </div>
                     </div>
 
+                    <!-- Bespoke Technical Schematic UI for Synced N -->
+                    <div class="project-visual-container">
+                        <div class="schematic-header">
+                            <span>APP SCHEMATIC // LINEUP MODULE</span>
+                            <span>SYNCED_N.KT</span>
+                        </div>
+                        <div class="schematic-synced-n">
+                            <div class="schematic-schedule-card">
+                                <div class="sched-title">
+                                    <span>UPCOMING SERVICE // SUN 09:00</span>
+                                    <span>ROSTER: CONFIRMED</span>
+                                </div>
+                                <div class="sched-lineup-row">
+                                    <span>01. Opening Praise</span>
+                                    <span class="key-tag">KEY: G MAJ</span>
+                                </div>
+                                <div class="sched-lineup-row">
+                                    <span>02. Worship Ballad</span>
+                                    <span class="key-tag">KEY: D MAJ</span>
+                                </div>
+                                <div class="sched-lineup-row">
+                                    <span>03. Offering &amp; Response</span>
+                                    <span class="key-tag">KEY: C MAJ</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="schematic-header" style="border-bottom:none; margin-bottom:0; padding-bottom:0; border-top: 1px solid var(--border-subtle); padding-top: 10px;">
+                            <span>DB: FIREBASE REALTIME</span>
+                            <span>PLATFORM: ANDROID</span>
+                        </div>
+                    </div>
                 </article>
 
-
-                <!-- ================= PROJECT 3 ================= -->
-
-                <article class="project-card">
-
-                    <div class="project-image">
-
-                        <div class="image-placeholder">
-                            03
+                <!-- PROJECT 02: SMART ASSISTIVE CANE -->
+                <article class="project-showcase-entry reveal-on-scroll">
+                    <div class="project-entry-details">
+                        <div class="project-meta-top">
+                            <span class="project-serial">02</span>
+                            <span class="project-type-tag">EMBEDDED SYSTEM</span>
                         </div>
-
-                    </div>
-
-                    <div class="project-content">
-
-                        <p class="project-type">
-                            IOT / WEARABLE
+                        <h3 class="project-entry-title">Smart Assistive Cane</h3>
+                        <p class="project-entry-subtitle">
+                            Mobility Aid for Safety and Reminder System
                         </p>
-
-                        <h3>
-                            Smart Medication System
-                        </h3>
-
-                        <p>
-                            A wearable-assisted IoT system focused
-                            on medication reminders and real-time
-                            monitoring, combining an ESP32-based
-                            device with wearable alerts.
+                        <p class="project-entry-desc">
+                            An Arduino Nano-based assistive system augmenting a standard cane with ultrasonic obstacle detection, automatic low-light lighting, an I²C OLED display, RTC-driven audible reminders, and real-time step monitoring.
                         </p>
-
-                        <div class="project-tags">
-
-                            <span>ESP32</span>
-                            <span>IoT</span>
-                            <span>Wearable</span>
-
+                        <div class="project-tech-tags">
+                            <span class="project-tech-tag">Arduino Nano</span>
+                            <span class="project-tech-tag">OLED 0.96"</span>
+                            <span class="project-tech-tag">Ultrasonic Sensors</span>
+                            <span class="project-tech-tag">RTC Module</span>
+                            <span class="project-tech-tag">I²C Bus</span>
                         </div>
-
-                            <a
-                                href="smart-medication.html" class="project-link">
-                                View Project →
+                        <div class="project-action-row">
+                            <a href="smart-cane.html" class="project-link-primary">
+                                View Case Study <span class="arrow">→</span>
                             </a>
-
+                        </div>
                     </div>
 
+                    <!-- Bespoke Hardware Architecture Diagram -->
+                    <div class="project-visual-container">
+                        <div class="schematic-header">
+                            <span>HARDWARE WIRING BLOCK DIAGRAM</span>
+                            <span>MCU: ATMEGA328P</span>
+                        </div>
+                        <div class="schematic-cane-diag">
+                            <div class="hw-node">
+                                <div class="hw-node-title">INPUT // DISTANCE</div>
+                                <div class="hw-node-val">Ultrasonic Range</div>
+                            </div>
+                            <div class="hw-node">
+                                <div class="hw-node-title">INPUT // TIME</div>
+                                <div class="hw-node-val">DS3231 RTC</div>
+                            </div>
+                            <div class="hw-bus-line">
+                                <span>I²C DATA BUS (SDA / SCL)</span>
+                                <span>400 kHz SPEED</span>
+                            </div>
+                            <div class="hw-node">
+                                <div class="hw-node-title">OUTPUT // DISPLAY</div>
+                                <div class="hw-node-val">SSD1306 OLED</div>
+                            </div>
+                            <div class="hw-node">
+                                <div class="hw-node-title">OUTPUT // SAFETY</div>
+                                <div class="hw-node-val">Buzzer + High-LED</div>
+                            </div>
+                        </div>
+                        <div class="schematic-header" style="border-bottom:none; margin-bottom:0; padding-bottom:0; border-top: 1px solid var(--border-subtle); padding-top: 10px;">
+                            <span>STATUS: PROTOTYPE VERIFIED</span>
+                            <span>PWR: 5V REGULATED</span>
+                        </div>
+                    </div>
                 </article>
 
+                <!-- PROJECT 03: SMART MEDICATION SYSTEM -->
+                <article class="project-showcase-entry reveal-on-scroll">
+                    <div class="project-entry-details">
+                        <div class="project-meta-top">
+                            <span class="project-serial">03</span>
+                            <span class="project-type-tag">IOT / WEARABLE SYSTEM</span>
+                        </div>
+                        <h3 class="project-entry-title">Smart Medication System</h3>
+                        <p class="project-entry-subtitle">
+                            Automated Dispensing with Wearable-Assisted Alerts
+                        </p>
+                        <p class="project-entry-desc">
+                            A wearable-assisted IoT healthcare system pairing an ESP32-powered dispenser with wireless alerts and real-time monitoring to ensure schedule adherence and prevent missed dosages.
+                        </p>
+                        <div class="project-tech-tags">
+                            <span class="project-tech-tag">ESP32</span>
+                            <span class="project-tech-tag">IoT Telemetry</span>
+                            <span class="project-tech-tag">Wearable Alerts</span>
+                            <span class="project-tech-tag">Wi-Fi / BLE</span>
+                        </div>
+                        <div class="project-action-row">
+                            <a href="smart-medication.html" class="project-link-primary">
+                                View Case Study <span class="arrow">→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Bespoke IoT Telemetry Schematic -->
+                    <div class="project-visual-container">
+                        <div class="schematic-header">
+                            <span>IOT TELEMETRY &amp; DISPENSER PACKET</span>
+                            <span>NODE: ESP32-WROOM</span>
+                        </div>
+                        <div class="schematic-med-diag">
+                            <div class="iot-status-row">
+                                <span class="metric-label">DISPENSER CYCLE</span>
+                                <span class="metric-val">SLOT #03 DISPENSED</span>
+                            </div>
+                            <div class="iot-status-row">
+                                <span class="metric-label">WEARABLE STATUS</span>
+                                <span class="metric-val">LINKED // BLE PAIRED</span>
+                            </div>
+                            <div class="iot-status-row">
+                                <span class="metric-label">REMINDER SCHEDULE</span>
+                                <span class="metric-val">NEXT DOSAGE: 12:00</span>
+                            </div>
+                        </div>
+                        <div class="schematic-header" style="border-bottom:none; margin-bottom:0; padding-bottom:0; border-top: 1px solid var(--border-subtle); padding-top: 10px;">
+                            <span>NETWORK: MQTT / BLE</span>
+                            <span>ACCURACY: REAL-TIME</span>
+                        </div>
+                    </div>
+                </article>
 
             </div>
-
         </section>
-
-
-        <!-- ================= FOOTER ================= -->
-
-        <footer>
-
-            <p>
-                © <span id="year"></span> JUSWA.
-                Built with HTML, CSS & JavaScript.
-            </p>
-
-        </footer>
-
     </main>
 
+    <!-- ================= GLOBAL FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col footer-col-brand">
+                <a href="index.html" class="footer-logo">
+                    <span class="logo-text">JUSWA<span>.</span></span>
+                </a>
+                <p class="footer-name">Joshua Aquino Lagare</p>
+                <p class="footer-tagline">Computer Engineering • Development • Art</p>
+                <p class="footer-desc">
+                    Building practical technology across software, embedded systems, and IoT with creative discipline and digital art.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">NAVIGATE</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">01 Home</a></li>
+                    <li><a href="about.html">02 About</a></li>
+                    <li><a href="skills.html">03 Skills</a></li>
+                    <li><a href="projects.html">04 Projects</a></li>
+                    <li><a href="artwork.html">05 Artwork</a></li>
+                    <li><a href="contact.html">06 Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">CONNECT</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:joshualagare255@gmail.com">Email ↗</a></li>
+                    <li><a href="https://github.com/Shuwawao" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+                    <li><a href="https://www.instagram.com/juswa_draws" target="_blank" rel="noopener noreferrer">Instagram (Art) ↗</a></li>
+                    <li><a href="https://www.instagram.com/shuwawao" target="_blank" rel="noopener noreferrer">Instagram (Personal) ↗</a></li>
+                    <li><a href="https://www.facebook.com/share/1F1aA2ChW4/" target="_blank" rel="noopener noreferrer">Facebook ↗</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">DISCIPLINES</h4>
+                <ul class="footer-meta-list">
+                    <li><span class="meta-tag">DEV</span> Software Architecture</li>
+                    <li><span class="meta-tag">HARDWARE</span> Embedded &amp; IoT</li>
+                    <li><span class="meta-tag">ART</span> Digital Illustration</li>
+                    <li><span class="meta-tag">DEGREE</span> Computer Engineering</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© <span id="year">2026</span> JUSWA. Built with HTML, CSS &amp; JavaScript.</p>
+            <div class="footer-status-pill">
+                <span class="status-indicator-dot"></span>
+                <span>SYSTEM: ALL SERVICES OPERATIONAL</span>
+            </div>
+        </div>
+    </footer>
 
 </body>
 

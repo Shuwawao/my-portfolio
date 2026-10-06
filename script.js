@@ -1,43 +1,50 @@
 // ==========================================================================
-// JUSWA PORTFOLIO — INTERACTIVE ENGINE
-// Lightweight Vanilla JavaScript (No heavy frameworks or libraries)
+// JUSWA PORTFOLIO — GLOBAL INTERACTIVE ENGINE
+// Lightweight Vanilla JavaScript (Zero bloated frameworks)
 // ==========================================================================
 
 document.addEventListener("DOMContentLoaded", () => {
     initNavigation();
     initCurrentYear();
     initHeroTyping();
-    initHeroDiagramInteraction();
+    initHeroArtInteraction();
+    initPhotoScreentoneReveal();
     initSkillInspector();
     initArtworkLightbox();
     initScrollReveal();
     initCustomCursor();
 });
 
-// ================= 1. SHARED NAVIGATION & ACTIVE TRACKING =================
+// ================= 1. GLOBAL NAVIGATION & RELIABLE ACTIVE DETECTION =================
 function initNavigation() {
     const navbarMount = document.getElementById("navbar");
-    if (!navbarMount) return;
 
-    if (navbarMount.tagName === "HEADER") {
+    if (navbarMount && navbarMount.tagName === "HEADER") {
         setupNavbarInteractions();
+        highlightActivePage();
         return;
     }
 
-    // If placeholder div
-    fetch("navbar.html")
-        .then(res => {
-            if (!res.ok) throw new Error("Failed to load navbar.html");
-            return res.text();
-        })
-        .then(html => {
-            navbarMount.outerHTML = html;
-            setupNavbarInteractions();
-        })
-        .catch(err => {
-            console.warn("Shared navigation could not be loaded via fetch (e.g. file:// protocol):", err);
-            setupNavbarInteractions();
-        });
+    if (navbarMount && navbarMount.tagName === "DIV") {
+        fetch("navbar.html")
+            .then(res => {
+                if (!res.ok) throw new Error("Failed to load navbar.html");
+                return res.text();
+            })
+            .then(html => {
+                navbarMount.outerHTML = html;
+                setupNavbarInteractions();
+                highlightActivePage();
+            })
+            .catch(err => {
+                console.warn("Navbar fetch failed (e.g. file:// protocol):", err);
+                setupNavbarInteractions();
+                highlightActivePage();
+            });
+    } else {
+        setupNavbarInteractions();
+        highlightActivePage();
+    }
 }
 
 function setupNavbarInteractions() {
@@ -51,66 +58,62 @@ function setupNavbarInteractions() {
         });
 
         navLinks.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", (e) => {
+            link.addEventListener("click", () => {
                 navLinks.classList.remove("open");
                 menuToggle.setAttribute("aria-expanded", "false");
-
-                // If on index.html and link contains anchor on same page, smooth scroll
-                const href = link.getAttribute("href");
-                if (href && href.includes("#")) {
-                    const targetId = href.split("#")[1];
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        e.preventDefault();
-                        targetElement.scrollIntoView({ behavior: "smooth" });
-                        history.pushState(null, "", `#${targetId}`);
-                    }
-                }
             });
         });
     }
-
-    initScrollSpy();
 }
 
-function initScrollSpy() {
-    const navAnchors = document.querySelectorAll("#nav-links a[data-section]");
+// FIX: Rock-solid active page highlighting for ALL pages (including Projects & Artwork)
+function highlightActivePage() {
+    const navAnchors = document.querySelectorAll("#nav-links a");
     if (!navAnchors.length) return;
 
-    const sections = Array.from(navAnchors).map(a => {
-        const secId = a.getAttribute("data-section");
-        return document.getElementById(secId);
-    }).filter(Boolean);
+    const currentPath = window.location.pathname.toLowerCase();
+    let filename = currentPath.substring(currentPath.lastIndexOf('/') + 1) || "index.html";
+    filename = filename.split('#')[0].split('?')[0];
 
-    if (!sections.length) return;
+    // Normalize root and GitHub Pages repository folder path
+    if (filename === "" || filename === "my-portfolio" || filename === "my-portfolio/") {
+        filename = "index.html";
+    }
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const currentId = entry.target.id;
-                navAnchors.forEach(a => {
-                    if (a.getAttribute("data-section") === currentId) {
-                        a.classList.add("active");
-                    } else {
-                        a.classList.remove("active");
-                    }
-                });
-            }
-        });
-    }, {
-        threshold: 0.25,
-        rootMargin: "-80px 0px -40% 0px"
+    navAnchors.forEach(link => {
+        const href = (link.getAttribute("href") || "").toLowerCase().split('#')[0].split('?')[0];
+        let linkFile = href.substring(href.lastIndexOf('/') + 1) || "index.html";
+        if (linkFile === "") linkFile = "index.html";
+
+        let isCurrent = false;
+
+        if (filename === "index.html") {
+            isCurrent = (linkFile === "index.html");
+        } else if (filename === "artwork.html") {
+            isCurrent = (linkFile === "artwork.html");
+        } else if (filename === "projects.html" || filename === "synced-n.html" || filename === "smart-cane.html" || filename === "smart-medication.html") {
+            isCurrent = (linkFile === "projects.html");
+        } else {
+            isCurrent = (filename === linkFile);
+        }
+
+        if (isCurrent) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
+        } else {
+            link.classList.remove("active");
+            link.removeAttribute("aria-current");
+        }
     });
-
-    sections.forEach(sec => observer.observe(sec));
 }
 
 // ================= 2. FOOTER YEAR =================
 function initCurrentYear() {
-    const yearEl = document.getElementById("year");
-    if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
-    }
+    const yearEls = document.querySelectorAll("#year");
+    const currentYear = new Date().getFullYear();
+    yearEls.forEach(el => {
+        el.textContent = currentYear;
+    });
 }
 
 // ================= 3. HERO TYPING EFFECT =================
@@ -146,11 +149,11 @@ function initHeroTyping() {
 
         if (!isDeleting && charIdx === current.length) {
             isDeleting = true;
-            delay = 1800; // Pause at full word
+            delay = 1800;
         } else if (isDeleting && charIdx === 0) {
             isDeleting = false;
             roleIdx = (roleIdx + 1) % roles.length;
-            delay = 350; // Pause before typing new word
+            delay = 350;
         }
 
         setTimeout(typeLoop, delay);
@@ -159,63 +162,112 @@ function initHeroTyping() {
     setTimeout(typeLoop, 1400);
 }
 
-// ================= 4. HERO LIVING DIAGRAM MICRO-INTERACTION =================
-function initHeroDiagramInteraction() {
-    const card = document.getElementById("hero-diagram-card");
-    const target = document.getElementById("diagram-target");
-    const coordsEl = document.getElementById("diagram-coords");
-    const drawer = document.getElementById("portrait-drawer");
-    const toggleBtn = document.getElementById("toggle-avatar-btn");
-    const closeBtn = document.getElementById("close-portrait-btn");
+// ================= 4. HOME PAGE HERO ARTWORK TILT & PARALLAX =================
+function initHeroArtInteraction() {
+    const frame = document.getElementById("hero-art-frame");
+    const coordsEl = document.getElementById("hero-art-coords");
 
-    if (!card || !target) return;
+    if (!frame) return;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
 
-    if (!reduceMotion) {
-        card.addEventListener("mousemove", (e) => {
-            const rect = card.getBoundingClientRect();
-            const relX = e.clientX - rect.left;
-            const relY = e.clientY - rect.top;
+    frame.addEventListener("mousemove", (e) => {
+        const rect = frame.getBoundingClientRect();
+        const relX = e.clientX - rect.left;
+        const relY = e.clientY - rect.top;
 
-            // Normalize between -1 and 1 from center
-            const normX = (relX / rect.width - 0.5) * 2;
-            const normY = (relY / rect.height - 0.5) * 2;
+        const normX = (relX / rect.width - 0.5) * 2;
+        const normY = (relY / rect.height - 0.5) * 2;
 
-            // Clamped subtle displacement: 4-10px maximum
-            const moveX = normX * 9;
-            const moveY = normY * 7;
+        const tiltX = -normY * 7;
+        const tiltY = normX * 7;
 
-            target.style.transform = `translate3d(${moveX.toFixed(1)}px, ${moveY.toFixed(1)}px, 0)`;
+        frame.style.setProperty("--tilt-x", `${tiltX.toFixed(2)}deg`);
+        frame.style.setProperty("--tilt-y", `${tiltY.toFixed(2)}deg`);
 
-            if (coordsEl) {
-                coordsEl.textContent = `INPUT: POINTER [X: ${Math.round(relX)}, Y: ${Math.round(relY)}]`;
-            }
-        });
+        if (coordsEl) {
+            coordsEl.textContent = `INPUT: POINTER [X: ${Math.round(relX)}, Y: ${Math.round(relY)}]`;
+        }
+    });
 
-        card.addEventListener("mouseleave", () => {
-            target.style.transform = "translate3d(0, 0, 0)";
-            if (coordsEl) {
-                coordsEl.textContent = "INPUT: POINTER [STANDBY]";
-            }
-        });
-    }
-
-    // Artist self-portrait drawer toggle
-    if (toggleBtn && drawer) {
-        toggleBtn.addEventListener("click", () => {
-            drawer.classList.add("open");
-        });
-    }
-
-    if (closeBtn && drawer) {
-        closeBtn.addEventListener("click", () => {
-            drawer.classList.remove("open");
-        });
-    }
+    frame.addEventListener("mouseleave", () => {
+        frame.style.setProperty("--tilt-x", "0deg");
+        frame.style.setProperty("--tilt-y", "0deg");
+        if (coordsEl) {
+            coordsEl.textContent = "INPUT: POINTER [STANDBY]";
+        }
+    });
 }
 
-// ================= 5. TECHNICAL SKILL TOOLBOX INSPECTOR =================
+// ================= 5. ABOUT PAGE PHOTO SCREENTONE -> COLOR REVEAL =================
+function initPhotoScreentoneReveal() {
+    const stage = document.getElementById("photo-reveal-stage");
+    const statusEl = document.getElementById("photo-reveal-status");
+    const mobileBtn = document.getElementById("mobile-reveal-toggle");
+
+    if (!stage) return;
+
+    let isRevealedTouch = false;
+
+    // Mouse movement interaction (Gradual circular color reveal around cursor)
+    stage.addEventListener("mouseenter", () => {
+        stage.classList.add("is-hovered");
+    });
+
+    stage.addEventListener("mousemove", (e) => {
+        const rect = stage.getBoundingClientRect();
+        const relX = e.clientX - rect.left;
+        const relY = e.clientY - rect.top;
+
+        const posXPercent = ((relX / rect.width) * 100).toFixed(1);
+        const posYPercent = ((relY / rect.height) * 100).toFixed(1);
+
+        stage.style.setProperty("--reveal-x", `${posXPercent}%`);
+        stage.style.setProperty("--reveal-y", `${posYPercent}%`);
+        stage.style.setProperty("--reveal-radius", "130px");
+
+        if (statusEl) {
+            statusEl.textContent = `MODE: COLOR_REVEAL [X: ${Math.round(relX)}, Y: ${Math.round(relY)}]`;
+        }
+    });
+
+    stage.addEventListener("mouseleave", () => {
+        stage.classList.remove("is-hovered");
+        stage.style.setProperty("--reveal-radius", "0px");
+
+        if (statusEl) {
+            statusEl.textContent = "MODE: SCREENTONE";
+        }
+    });
+
+    // Mobile / Touch Tap to Toggle
+    function toggleMobileReveal() {
+        isRevealedTouch = !isRevealedTouch;
+        if (isRevealedTouch) {
+            stage.classList.add("fully-revealed");
+            if (statusEl) statusEl.textContent = "MODE: FULL_COLOR";
+            if (mobileBtn) mobileBtn.textContent = "[TAP TO RETURN TO SCREENTONE]";
+        } else {
+            stage.classList.remove("fully-revealed");
+            if (statusEl) statusEl.textContent = "MODE: SCREENTONE";
+            if (mobileBtn) mobileBtn.textContent = "[TAP TO TOGGLE COLOR]";
+        }
+    }
+
+    if (mobileBtn) {
+        mobileBtn.addEventListener("click", toggleMobileReveal);
+    }
+
+    stage.addEventListener("click", () => {
+        const isTouch = window.matchMedia("(pointer: coarse)").matches || window.innerWidth <= 850;
+        if (isTouch) {
+            toggleMobileReveal();
+        }
+    });
+}
+
+// ================= 6. TECHNICAL SKILL TOOLBOX INSPECTOR =================
 function initSkillInspector() {
     const pills = document.querySelectorAll(".skill-item-pill");
     const nameEl = document.getElementById("insp-name");
@@ -247,7 +299,7 @@ function initSkillInspector() {
     });
 }
 
-// ================= 6. ARTWORK LIGHTBOX VIEWER =================
+// ================= 7. ARTWORK LIGHTBOX VIEWER =================
 function initArtworkLightbox() {
     const cards = document.querySelectorAll(".art-sketchbook-card");
     const lightbox = document.getElementById("art-lightbox");
@@ -314,7 +366,6 @@ function initArtworkLightbox() {
         if (e.target === lightbox) closeLightbox();
     });
 
-    // Keyboard accessibility
     document.addEventListener("keydown", (e) => {
         if (!lightbox.classList.contains("active")) return;
 
@@ -328,7 +379,7 @@ function initArtworkLightbox() {
     });
 }
 
-// ================= 7. SCROLL REVEAL OBSERVER =================
+// ================= 8. SCROLL REVEAL OBSERVER =================
 function initScrollReveal() {
     const revealElements = document.querySelectorAll(".reveal-on-scroll");
     if (!revealElements.length) return;
@@ -348,13 +399,13 @@ function initScrollReveal() {
         });
     }, {
         threshold: 0.12,
-        rootMargin: "0px 0px -50px 0px"
+        rootMargin: "0px 0px -40px 0px"
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
 }
 
-// ================= 8. SUBTLE CUSTOM CURSOR (DESKTOP) =================
+// ================= 9. SUBTLE CUSTOM CURSOR (DESKTOP) =================
 function initCustomCursor() {
     const dot = document.getElementById("cursor-dot");
     const ring = document.getElementById("cursor-ring");
@@ -383,8 +434,7 @@ function initCustomCursor() {
     }
     loop();
 
-    // Hover effect on clickable elements
-    const interactiveTargets = "a, button, .skill-item-pill, .art-sketchbook-card, .diagram-view-toggle";
+    const interactiveTargets = "a, button, .skill-item-pill, .art-sketchbook-card, .mobile-reveal-toggle";
     document.addEventListener("mouseover", (e) => {
         if (e.target.closest(interactiveTargets)) {
             ring.classList.add("cursor-active");
