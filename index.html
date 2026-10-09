@@ -227,85 +227,146 @@ window.addEventListener('DOMContentLoaded', () => {
             </div>
         </section>
 
-        <!-- ================= SELECTED PROJECTS HIGHLIGHT ================= -->
-        <section class="section reveal-on-scroll">
-            <div class="section-header">
-                <div class="section-heading">
-                    <p class="eyebrow">
-                        <span class="eyebrow-num">02 /</span> SELECTED WORK
-                    </p>
-                    <h2>Featured builds.</h2>
-                    <p class="section-desc">
-                        Engineering prototypes and mobile software designed to solve real-world problems.
-                    </p>
+        <!-- ================= SELECTED PROJECTS HIGHLIGHT (INTERACTIVE SHOWCASE) ================= -->
+        <section class="section reveal-on-scroll" id="featured-builds-section">
+            <div class="featured-showcase-header">
+                <div class="featured-header-badge">
+                    <span class="badge-dot-grid" aria-hidden="true">
+                        <i></i><i></i><i></i><i></i><i></i><i></i>
+                    </span>
+                    <span class="featured-badge-text">02 / SELECTED WORK</span>
+                    <span class="featured-count-pill">3 FEATURED</span>
                 </div>
-                <div>
-                    <a href="projects.html" class="button secondary">
-                        All Projects <span class="arrow">&rarr;</span>
-                    </a>
+                <div class="featured-header-row">
+                    <div class="featured-header-left">
+                        <h2 class="featured-showcase-title">Featured builds.</h2>
+                        <p class="section-desc">
+                            Engineering prototypes and mobile software designed to solve real-world problems.
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <div class="projects-grid">
-                <!-- PROJECT 1 -->
-                <article class="project-card">
-                    <div class="project-image">
-                        <img src="images/synced-N-web.jpg" alt="Synced N App">
+            <div class="featured-interactive-stage">
+                <!-- LEFT COLUMN: LIVE BROWSER / DEVICE PREVIEW FRAME -->
+                <div class="featured-preview-frame" id="featured-preview-frame">
+                    <div class="browser-chrome-bar">
+                        <div class="browser-dots" aria-hidden="true">
+                            <span class="dot dot-close"></span>
+                            <span class="dot dot-min"></span>
+                            <span class="dot dot-max"></span>
+                        </div>
+                        <div class="browser-address-pill">
+                            <span class="browser-ssl-dot"></span>
+                            <span class="browser-url-text" id="featured-browser-url">synced-n.app</span>
+                        </div>
+                        <div class="browser-playback-pill" id="featured-playback-badge" title="Auto-playing showcase. Hover to pause.">
+                            <span class="playback-indicator"></span>
+                            <span class="playback-text" id="featured-playback-text">AUTO</span>
+                        </div>
                     </div>
-                    <div class="project-content">
-                        <p class="project-type">MOBILE APPLICATION</p>
-                        <h3>Synced N</h3>
-                        <p>
+
+                    <!-- Screen Viewport -->
+                    <div class="browser-screen-viewport">
+                        <div class="featured-media-canvas" id="featured-media-canvas">
+                            <img src="images/synced-N-web.jpg" alt="Synced N Preview" id="featured-active-image" class="featured-screen-img" loading="eager">
+                        </div>
+                    </div>
+
+                    <!-- Project Info Meta Tray -->
+                    <div class="browser-meta-tray" id="browser-meta-tray">
+                        <div class="meta-tray-top">
+                            <span class="project-category-badge" id="featured-active-category">MOBILE APPLICATION</span>
+                            <span class="project-matrix-counter" id="featured-active-counter">01 / 03</span>
+                        </div>
+                        <h3 class="meta-tray-title" id="featured-active-title">Synced N</h3>
+                        <p class="meta-tray-desc" id="featured-active-desc">
                             Church music ministry scheduling and lineup management system designed to coordinate teams and service lineups.
                         </p>
-                        <div class="project-tags">
-                            <span>Kotlin</span>
-                            <span>Firebase</span>
-                            <span>Android</span>
+                        <div class="meta-tray-tags" id="featured-active-tags">
+                            <span class="tech-tag">Kotlin</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Android</span>
                         </div>
-                        <a href="synced-n.html" class="project-link">View Case Study &rarr;</a>
+                        <div class="meta-tray-action">
+                            <a href="synced-n.html" class="button primary featured-view-btn" id="featured-active-link">
+                                View Case Study <span class="arrow">&rarr;</span>
+                            </a>
+                        </div>
                     </div>
-                </article>
+                </div>
 
-                <!-- PROJECT 2 -->
-                <article class="project-card">
-                    <div class="project-image">
-                        <img src="images/smart-cane-web.jpg" alt="Smart Assistive Cane">
-                    </div>
-                    <div class="project-content">
-                        <p class="project-type">EMBEDDED SYSTEM</p>
-                        <h3>Smart Assistive Cane</h3>
-                        <p>
-                            Arduino-based assistive system combining ultrasonic obstacle sensing, lighting, and RTC time reminders.
-                        </p>
-                        <div class="project-tags">
-                            <span>Arduino</span>
-                            <span>OLED</span>
-                            <span>Sensors</span>
+                <!-- RIGHT COLUMN: INTERACTIVE PROJECT SELECTION LIST -->
+                <div class="featured-nav-list" role="tablist" aria-label="Featured projects selection">
+                    <!-- Tab 1 -->
+                    <div class="featured-nav-item active" role="tab" tabindex="0" aria-selected="true" data-index="0"
+                         data-url="synced-n.app"
+                         data-title="Synced N"
+                         data-category="MOBILE APPLICATION"
+                         data-desc="Church music ministry scheduling and lineup management system designed to coordinate teams and service lineups."
+                         data-tags="Kotlin,Firebase,Android"
+                         data-img="images/synced-N-web.jpg"
+                         data-link="synced-n.html"
+                         data-counter="01 / 03">
+                        <div class="nav-item-indicator" aria-hidden="true">
+                            <span class="nav-active-dot"></span>
                         </div>
-                        <a href="smart-cane.html" class="project-link">View Case Study &rarr;</a>
+                        <div class="nav-item-num">01</div>
+                        <div class="nav-item-content">
+                            <h4 class="nav-item-title">Synced N</h4>
+                            <p class="nav-item-meta">Church Ministry Management &bull; Kotlin &bull; Firebase &bull; Android</p>
+                        </div>
+                        <div class="nav-item-arrow" aria-hidden="true">&nearr;</div>
                     </div>
-                </article>
 
-                <!-- PROJECT 3 -->
-                <article class="project-card">
-                    <div class="project-image">
-                        <img src="images/medisync-web.jpg" alt="Smart Medication System">
-                    </div>
-                    <div class="project-content">
-                        <p class="project-type">IOT / WEARABLE</p>
-                        <h3>Smart Medication System</h3>
-                        <p>
-                            Wearable-assisted IoT dispensing system focused on automated medication schedules and real-time monitoring.
-                        </p>
-                        <div class="project-tags">
-                            <span>ESP32</span>
-                            <span>IoT</span>
-                            <span>Wearable</span>
+                    <!-- Tab 2 -->
+                    <div class="featured-nav-item" role="tab" tabindex="0" aria-selected="false" data-index="1"
+                         data-url="smart-cane.iot"
+                         data-title="Smart Assistive Cane"
+                         data-category="EMBEDDED SYSTEM"
+                         data-desc="Arduino-based assistive system combining ultrasonic obstacle sensing, lighting, and RTC time reminders."
+                         data-tags="Arduino,OLED,Sensors"
+                         data-img="images/smart-cane-web.jpg"
+                         data-link="smart-cane.html"
+                         data-counter="02 / 03">
+                        <div class="nav-item-indicator" aria-hidden="true">
+                            <span class="nav-active-dot"></span>
                         </div>
-                        <a href="smart-medication.html" class="project-link">View Case Study &rarr;</a>
+                        <div class="nav-item-num">02</div>
+                        <div class="nav-item-content">
+                            <h4 class="nav-item-title">Smart Assistive Cane</h4>
+                            <p class="nav-item-meta">Mobility &amp; Safety Aid &bull; Arduino &bull; Ultrasonic &bull; OLED</p>
+                        </div>
+                        <div class="nav-item-arrow" aria-hidden="true">&nearr;</div>
                     </div>
-                </article>
+
+                    <!-- Tab 3 -->
+                    <div class="featured-nav-item" role="tab" tabindex="0" aria-selected="false" data-index="2"
+                         data-url="medisync.iot"
+                         data-title="Smart Medication System"
+                         data-category="IOT / WEARABLE"
+                         data-desc="Wearable-assisted IoT dispensing system focused on automated medication schedules and real-time monitoring."
+                         data-tags="ESP32,IoT,Wearable"
+                         data-img="images/medisync-web.jpg"
+                         data-link="smart-medication.html"
+                         data-counter="03 / 03">
+                        <div class="nav-item-indicator" aria-hidden="true">
+                            <span class="nav-active-dot"></span>
+                        </div>
+                        <div class="nav-item-num">03</div>
+                        <div class="nav-item-content">
+                            <h4 class="nav-item-title">Smart Medication System</h4>
+                            <p class="nav-item-meta">IoT Healthcare &bull; ESP32 &bull; BLE Telemetry &bull; Dispenser</p>
+                        </div>
+                        <div class="nav-item-arrow" aria-hidden="true">&nearr;</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-showcase-footer">
+                <a href="projects.html" class="button secondary featured-all-btn">
+                    View all projects <span class="arrow">&rarr;</span>
+                </a>
             </div>
         </section>
 

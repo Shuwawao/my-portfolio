@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initSkillInspector();
     initArtworkLightbox();
     initScrollReveal();
+    initFeaturedShowcase();
     initCustomCursor();
 });
 
@@ -435,7 +436,7 @@ function initCustomCursor() {
     }
     loop();
 
-    const interactiveTargets = "a, button, .skill-item-pill, .art-sketchbook-card, .mobile-reveal-toggle";
+    const interactiveTargets = "a, button, .skill-item-pill, .art-sketchbook-card, .mobile-reveal-toggle, .featured-nav-item, .featured-view-btn, .featured-all-btn";
     document.addEventListener("mouseover", (e) => {
         if (e.target.closest(interactiveTargets)) {
             ring.classList.add("cursor-active");
@@ -458,4 +459,161 @@ function initCustomCursor() {
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('juswa-theme', newTheme);
     });
+}
+
+
+// ================= 10. INTERACTIVE FEATURED BUILDS SHOWCASE =================
+function initFeaturedShowcase() {
+    const section = document.getElementById("featured-builds-section");
+    const navItems = document.querySelectorAll(".featured-nav-item");
+    const previewFrame = document.getElementById("featured-preview-frame");
+    const activeImg = document.getElementById("featured-active-image");
+    const browserUrl = document.getElementById("featured-browser-url");
+    const playbackBadge = document.getElementById("featured-playback-badge");
+    const playbackText = document.getElementById("featured-playback-text");
+    const activeCategory = document.getElementById("featured-active-category");
+    const activeCounter = document.getElementById("featured-active-counter");
+    const activeTitle = document.getElementById("featured-active-title");
+    const activeDesc = document.getElementById("featured-active-desc");
+    const activeTags = document.getElementById("featured-active-tags");
+    const activeLink = document.getElementById("featured-active-link");
+    const metaTray = document.getElementById("browser-meta-tray");
+
+    if (!section || !navItems.length || !activeImg) return;
+
+    let currentIndex = 0;
+    let autoPlayTimer = null;
+    let isUserInteracting = false;
+    let isSectionVisible = false;
+
+    function selectProject(index, manual = false) {
+        if (index === currentIndex && !manual) return;
+        if (index < 0 || index >= navItems.length) return;
+
+        const targetItem = navItems[index];
+        if (!targetItem) return;
+
+        // Update list active states
+        navItems.forEach((item, i) => {
+            const isActive = i === index;
+            item.classList.toggle("active", isActive);
+            item.setAttribute("aria-selected", isActive ? "true" : "false");
+        });
+
+        const url = targetItem.getAttribute("data-url") || "project.pages.dev";
+        const title = targetItem.getAttribute("data-title") || "";
+        const category = targetItem.getAttribute("data-category") || "";
+        const desc = targetItem.getAttribute("data-desc") || "";
+        const tags = (targetItem.getAttribute("data-tags") || "").split(",").map(t => t.trim()).filter(Boolean);
+        const imgSrc = targetItem.getAttribute("data-img") || "";
+        const linkHref = targetItem.getAttribute("data-link") || "projects.html";
+        const counter = targetItem.getAttribute("data-counter") || `0${index + 1} / 0${navItems.length}`;
+
+        // Smooth transition animation
+        if (activeImg) activeImg.classList.add("is-transitioning");
+        if (metaTray) metaTray.classList.add("is-transitioning");
+
+        setTimeout(() => {
+            if (activeImg && imgSrc) {
+                activeImg.src = imgSrc;
+                activeImg.alt = `${title} Preview`;
+            }
+            if (browserUrl) browserUrl.textContent = url;
+            if (activeCategory) activeCategory.textContent = category;
+            if (activeCounter) activeCounter.textContent = counter;
+            if (activeTitle) activeTitle.textContent = title;
+            if (activeDesc) activeDesc.textContent = desc;
+            if (activeLink) activeLink.href = linkHref;
+
+            if (activeTags) {
+                activeTags.innerHTML = tags.map(tag => `<span class="tech-tag">${tag}</span>`).join("");
+            }
+
+            if (activeImg) activeImg.classList.remove("is-transitioning");
+            if (metaTray) metaTray.classList.remove("is-transitioning");
+        }, 160);
+
+        currentIndex = index;
+    }
+
+    function pauseAutoPlay() {
+        isUserInteracting = true;
+        if (playbackBadge) playbackBadge.classList.add("is-paused");
+        if (playbackText) playbackText.textContent = "PAUSED";
+    }
+
+    function resumeAutoPlay() {
+        isUserInteracting = false;
+        if (playbackBadge) playbackBadge.classList.remove("is-paused");
+        if (playbackText) playbackText.textContent = "AUTO";
+    }
+
+    function stepNext() {
+        if (isUserInteracting || !isSectionVisible) return;
+        const nextIndex = (currentIndex + 1) % navItems.length;
+        selectProject(nextIndex);
+    }
+
+    // Nav Item events
+    navItems.forEach((item, index) => {
+        item.addEventListener("mouseenter", () => {
+            selectProject(index, true);
+            pauseAutoPlay();
+        });
+
+        item.addEventListener("click", () => {
+            selectProject(index, true);
+            pauseAutoPlay();
+        });
+
+        item.addEventListener("focus", () => {
+            selectProject(index, true);
+            pauseAutoPlay();
+        });
+
+        item.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                selectProject(index, true);
+            } else if (e.key === "ArrowDown") {
+                e.preventDefault();
+                const next = (index + 1) % navItems.length;
+                navItems[next].focus();
+                selectProject(next, true);
+            } else if (e.key === "ArrowUp") {
+                e.preventDefault();
+                const prev = (index - 1 + navItems.length) % navItems.length;
+                navItems[prev].focus();
+                selectProject(prev, true);
+            }
+        });
+    });
+
+    // Pause on hover over the entire showcase stage
+    const stage = document.querySelector(".featured-interactive-stage");
+    if (stage) {
+        stage.addEventListener("mouseenter", pauseAutoPlay);
+        stage.addEventListener("mouseleave", resumeAutoPlay);
+        stage.addEventListener("focusin", pauseAutoPlay);
+        stage.addEventListener("focusout", (e) => {
+            if (!stage.contains(e.relatedTarget)) {
+                resumeAutoPlay();
+            }
+        });
+    }
+
+    // Interval rotation
+    autoPlayTimer = setInterval(stepNext, 5000);
+
+    // Observe visibility so it only auto-rotates when in viewport
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                isSectionVisible = entry.isIntersecting;
+            });
+        }, { threshold: 0.2 });
+        observer.observe(section);
+    } else {
+        isSectionVisible = true;
+    }
 }
