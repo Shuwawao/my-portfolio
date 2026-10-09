@@ -66,6 +66,37 @@ function setupNavbarInteractions() {
             });
         });
     }
+
+    setupStickyNavbarBehavior();
+}
+
+function setupStickyNavbarBehavior() {
+    const navbar = document.getElementById("navbar");
+    if (!navbar) return;
+
+    // Reading progress bar at base of navbar
+    let progressBar = document.getElementById("nav-scroll-progress");
+    if (!progressBar) {
+        progressBar = document.createElement("div");
+        progressBar.id = "nav-scroll-progress";
+        progressBar.className = "nav-scroll-progress";
+        navbar.appendChild(progressBar);
+    }
+
+    function handleScroll() {
+        const scrolled = window.scrollY > 15;
+        navbar.classList.toggle("nav-scrolled", scrolled);
+
+        // Calculate scroll progress percentage
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight > 0) {
+            const progress = Math.min(100, Math.max(0, (window.scrollY / docHeight) * 100));
+            progressBar.style.width = `${progress}%`;
+        }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
 }
 
 // FIX: Rock-solid active page highlighting for ALL pages (including Projects & Artwork)
