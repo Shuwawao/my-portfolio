@@ -1,4 +1,4 @@
-// ==========================================================================
+﻿// ==========================================================================
 // JUSWA PORTFOLIO — GLOBAL INTERACTIVE ENGINE
 // Lightweight Vanilla JavaScript (Zero bloated frameworks)
 // ==========================================================================
@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initNavigation();
     initCurrentYear();
     initHeroTyping();
+    initThemeToggle();
     initHeroArtInteraction();
     initPhotoScreentoneReveal();
     initSkillInspector();
@@ -445,5 +446,16 @@ function initCustomCursor() {
         if (e.target.closest(interactiveTargets)) {
             ring.classList.remove("cursor-active");
         }
+    });
+}function initThemeToggle() {
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (!toggleBtn) return;
+    
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('juswa-theme', newTheme);
     });
 }

@@ -1,15 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Artwork — JUSWA: Digital illustrations, character designs, and stylization studies painted in Krita.">
-    <title>Artwork — JUSWA</title>
+    <meta name="description" content="Artwork &mdash; JUSWA: Digital illustrations, character designs, and stylization studies painted in Krita.">
+    <title>Artwork &mdash; JUSWA</title>
 
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+<script src="theme-init.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
     <div class="custom-cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
     <!-- ================= GLOBAL NAVIGATION ================= -->
-    <header class="navbar" id="navbar">
+        <header class="navbar" id="navbar">
         <a href="index.html" class="logo">
             <div class="logo-badge">
                 <img src="images/favicon.png" alt="JUSWA Logo">
@@ -28,13 +29,25 @@
             <span class="logo-meta">WORKSPACE</span>
         </a>
 
-        <button
-            class="menu-toggle"
-            id="menu-toggle"
-            aria-label="Toggle navigation menu"
-            aria-expanded="false">
-            ☰
-        </button>
+        <div class="nav-actions">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+
+            <div class="nav-status">
+                <span class="nav-status-dot"></span>
+                <span>SYS: ONLINE</span>
+            </div>
+
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false">
+                &#9776;
+            </button>
+        </div>
 
         <nav id="nav-links">
             <a href="index.html" data-page="index"><span class="nav-num">01</span> HOME</a>
@@ -44,11 +57,6 @@
             <a href="artwork.html" data-page="artwork" class="active"><span class="nav-num">05</span> ARTWORK</a>
             <a href="contact.html" data-page="contact"><span class="nav-num">06</span> CONTACT</a>
         </nav>
-
-        <div class="nav-status">
-            <span class="nav-status-dot"></span>
-            <span>SYS: ONLINE</span>
-        </div>
     </header>
 
     <main>
@@ -74,7 +82,7 @@
                 <article class="art-sketchbook-card art-card-featured reveal-on-scroll" 
                          data-index="0"
                          data-title="Spider-Punk (Hobie Brown)"
-                         data-medium="Digital Illustration • Halftone &amp; Cel Study"
+                         data-medium="Digital Illustration &bull; Halftone &amp; Cel Study"
                          data-src="images/spiderman.webp">
                     <div class="art-image-frame">
                         <img src="images/spiderman.webp" alt="Spider-Punk digital illustration with electric guitar by JUSWA" loading="eager">
@@ -84,15 +92,15 @@
                             <span class="art-title">Spider-Punk</span>
                             <span class="art-medium">Dynamic Line &amp; Halftone Study</span>
                         </div>
-                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                        <span class="art-expand-hint" aria-hidden="true">&nearr; VIEW</span>
                     </div>
                 </article>
 
                 <!-- ARTWORK 02: DAVID & LUCY ON THE MOON (WIDE) -->
                 <article class="art-sketchbook-card art-card-wide reveal-on-scroll" 
                          data-index="1"
-                         data-title="David &amp; Lucy — To The Moon"
-                         data-medium="Digital Painting • Cyberpunk: Edgerunners Scene Study"
+                         data-title="David &amp; Lucy &mdash; To The Moon"
+                         data-medium="Digital Painting &bull; Cyberpunk: Edgerunners Scene Study"
                          data-src="images/cyberpunk.webp">
                     <div class="art-image-frame">
                         <img src="images/cyberpunk.webp" alt="David and Lucy on the moon digital painting by JUSWA" loading="eager">
@@ -102,7 +110,7 @@
                             <span class="art-title">David &amp; Lucy on the Moon</span>
                             <span class="art-medium">Atmospheric Scene &amp; Lighting Study</span>
                         </div>
-                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                        <span class="art-expand-hint" aria-hidden="true">&nearr; VIEW</span>
                     </div>
                 </article>
 
@@ -110,7 +118,7 @@
                 <article class="art-sketchbook-card art-card-col-4 reveal-on-scroll" 
                          data-index="2"
                          data-title="David Martinez"
-                         data-medium="Digital Illustration • Neon Rim Light Study"
+                         data-medium="Digital Illustration &bull; Neon Rim Light Study"
                          data-src="images/david.webp">
                     <div class="art-image-frame">
                         <img src="images/david.webp" alt="David Martinez Cyberpunk Edgerunners portrait by JUSWA" loading="lazy">
@@ -120,7 +128,7 @@
                             <span class="art-title">David Martinez</span>
                             <span class="art-medium">Neon Edge Lighting &amp; Expression</span>
                         </div>
-                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                        <span class="art-expand-hint" aria-hidden="true">&nearr; VIEW</span>
                     </div>
                 </article>
 
@@ -128,7 +136,7 @@
                 <article class="art-sketchbook-card art-card-col-4 reveal-on-scroll" 
                          data-index="3"
                          data-title="Hyakkimaru (Dororo)"
-                         data-medium="Digital Illustration • Motion &amp; Blade Study"
+                         data-medium="Digital Illustration &bull; Motion &amp; Blade Study"
                          data-src="images/hyakimaru.webp">
                     <div class="art-image-frame">
                         <img src="images/hyakimaru.webp" alt="Hyakkimaru action pose digital illustration by JUSWA" loading="lazy">
@@ -138,7 +146,7 @@
                             <span class="art-title">Hyakkimaru</span>
                             <span class="art-medium">Action Posing &amp; Blade Velocity</span>
                         </div>
-                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                        <span class="art-expand-hint" aria-hidden="true">&nearr; VIEW</span>
                     </div>
                 </article>
 
@@ -146,7 +154,7 @@
                 <article class="art-sketchbook-card art-card-col-4 reveal-on-scroll" 
                          data-index="4"
                          data-title="Izuku Midoriya (Deku)"
-                         data-medium="Digital Illustration • Energy Aura &amp; Shading"
+                         data-medium="Digital Illustration &bull; Energy Aura &amp; Shading"
                          data-src="images/deku.jpg">
                     <div class="art-image-frame">
                         <img src="images/deku.jpg" alt="Izuku Midoriya Deku digital illustration by JUSWA" loading="lazy">
@@ -156,7 +164,7 @@
                             <span class="art-title">Deku</span>
                             <span class="art-medium">Energy Aura &amp; Perspective Study</span>
                         </div>
-                        <span class="art-expand-hint" aria-hidden="true">↗ VIEW</span>
+                        <span class="art-expand-hint" aria-hidden="true">&nearr; VIEW</span>
                     </div>
                 </article>
 
@@ -185,11 +193,11 @@
                         Every piece begins with gesture sketching and structural anatomy before moving to ink line passes. In Krita, custom brush presets allow blending of cel-shaded highlights with soft color gradients and halftone screen textures.
                     </p>
                     <p class="section-text">
-                        Studying character form and lighting under extreme conditions directly informs my frontend user experience thinking — understanding where the eye travels and how contrast guides focus.
+                        Studying character form and lighting under extreme conditions directly informs my frontend user experience thinking &mdash; understanding where the eye travels and how contrast guides focus.
                     </p>
                     <div style="margin-top:20px;">
                         <a href="https://www.instagram.com/juswa_draws" target="_blank" rel="noopener noreferrer" class="button secondary">
-                            Follow Art on Instagram (@juswa_draws) ↗
+                            Follow Art on Instagram (@juswa_draws) &nearr;
                         </a>
                     </div>
                 </div>
@@ -225,7 +233,7 @@
                     <span class="logo-text">JUSWA<span>.</span></span>
                 </a>
                 <p class="footer-name">Joshua Aquino Lagare</p>
-                <p class="footer-tagline">Computer Engineering • Development • Art</p>
+                <p class="footer-tagline">Computer Engineering &bull; Development &bull; Art</p>
                 <p class="footer-desc">
                     Building practical technology across software, embedded systems, and IoT with creative discipline and digital art.
                 </p>
@@ -246,11 +254,11 @@
             <div class="footer-col">
                 <h4 class="footer-heading">CONNECT</h4>
                 <ul class="footer-links">
-                    <li><a href="mailto:joshualagare255@gmail.com">Email ↗</a></li>
-                    <li><a href="https://github.com/Shuwawao" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
-                    <li><a href="https://www.instagram.com/juswa_draws" target="_blank" rel="noopener noreferrer">Instagram (Art) ↗</a></li>
-                    <li><a href="https://www.instagram.com/shuwawao" target="_blank" rel="noopener noreferrer">Instagram (Personal) ↗</a></li>
-                    <li><a href="https://www.facebook.com/share/1F1aA2ChW4/" target="_blank" rel="noopener noreferrer">Facebook ↗</a></li>
+                    <li><a href="mailto:joshualagare255@gmail.com">Email &nearr;</a></li>
+                    <li><a href="https://github.com/Shuwawao" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a></li>
+                    <li><a href="https://www.instagram.com/juswa_draws" target="_blank" rel="noopener noreferrer">Instagram (Art) &nearr;</a></li>
+                    <li><a href="https://www.instagram.com/shuwawao" target="_blank" rel="noopener noreferrer">Instagram (Personal) &nearr;</a></li>
+                    <li><a href="https://www.facebook.com/share/1F1aA2ChW4/" target="_blank" rel="noopener noreferrer">Facebook &nearr;</a></li>
                 </ul>
             </div>
 

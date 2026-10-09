@@ -1,15 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About JUSWA — Joshua Aquino Lagare: Computer Engineering student, developer, and digital artist exploring software, embedded systems, and digital illustration.">
-    <title>About — JUSWA</title>
+    <meta name="description" content="About JUSWA &mdash; Joshua Aquino Lagare: Computer Engineering student, developer, and digital artist exploring software, embedded systems, and digital illustration.">
+    <title>About &mdash; JUSWA</title>
 
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+<script src="theme-init.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
     <div class="custom-cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
     <!-- ================= GLOBAL NAVIGATION ================= -->
-    <header class="navbar" id="navbar">
+        <header class="navbar" id="navbar">
         <a href="index.html" class="logo">
             <div class="logo-badge">
                 <img src="images/favicon.png" alt="JUSWA Logo">
@@ -28,13 +29,25 @@
             <span class="logo-meta">WORKSPACE</span>
         </a>
 
-        <button
-            class="menu-toggle"
-            id="menu-toggle"
-            aria-label="Toggle navigation menu"
-            aria-expanded="false">
-            ☰
-        </button>
+        <div class="nav-actions">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+
+            <div class="nav-status">
+                <span class="nav-status-dot"></span>
+                <span>SYS: ONLINE</span>
+            </div>
+
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false">
+                &#9776;
+            </button>
+        </div>
 
         <nav id="nav-links">
             <a href="index.html" data-page="index"><span class="nav-num">01</span> HOME</a>
@@ -44,11 +57,6 @@
             <a href="artwork.html" data-page="artwork"><span class="nav-num">05</span> ARTWORK</a>
             <a href="contact.html" data-page="contact"><span class="nav-num">06</span> CONTACT</a>
         </nav>
-
-        <div class="nav-status">
-            <span class="nav-status-dot"></span>
-            <span>SYS: ONLINE</span>
-        </div>
     </header>
 
     <main>
@@ -71,7 +79,7 @@
 
                 <div class="about-narrative">
                     <p class="about-statement">
-                        I am <span class="accent">Joshua Aquino Lagare</span>, known publicly as <span class="accent">JUSWA</span> — a Computer Engineering student, software developer, and digital artist.
+                        I am <span class="accent">Joshua Aquino Lagare</span>, known publicly as <span class="accent">JUSWA</span> &mdash; a Computer Engineering student, software developer, and digital artist.
                     </p>
 
                     <p>
@@ -84,7 +92,7 @@
 
                     <div style="margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
                         <a href="projects.html" class="button primary">
-                            View Engineering Projects <span class="arrow">→</span>
+                            View Engineering Projects <span class="arrow">&rarr;</span>
                         </a>
                         <a href="artwork.html" class="button secondary">
                             View Digital Art
@@ -97,7 +105,7 @@
                     <div class="photo-reveal-container" id="photo-reveal-container">
                         <div class="photo-frame-header">
                             <span class="photo-tag">PORTRAIT // JOSHUA AQUINO LAGARE</span>
-                            <span class="photo-status" id="photo-reveal-status">MODE: SCREENTONE</span>
+                            
                         </div>
 
                         <div class="photo-reveal-stage" id="photo-reveal-stage" tabindex="0" role="region" aria-label="Interactive portrait with screentone color reveal">
@@ -228,6 +236,83 @@
                 </div>
             </div>
         </section>
+            <!-- ================= MY AI TOOLKIT ================= -->
+        <section class="section reveal-on-scroll">
+            <div class="section-header">
+                <div class="section-heading">
+                    <p class="eyebrow">
+                        <span class="eyebrow-num">02.3 /</span> AUGMENTATION
+                    </p>
+                    <h2>My AI Toolkit.</h2>
+                    <p class="section-desc">
+                        Leveraging intelligent tools to accelerate development, brainstorm architectures, and refine creative processes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category-card">
+                    <div class="category-card-header">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <img src="images/icons/claude.svg" alt="Claude" class="ai-toolkit-icon">
+                            <h3>Claude</h3>
+                        </div>
+                    </div>
+                    <p class="section-text" style="font-size:14px; margin-top: 1rem;">
+                        My primary conversational partner for deep architectural discussions, complex debugging, and refactoring large codebases. Its long context window is invaluable for full-stack planning.
+                    </p>
+                </div>
+
+                <div class="skill-category-card">
+                    <div class="category-card-header">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <img src="images/icons/googlegemini.svg" alt="Gemini" class="ai-toolkit-icon">
+                            <h3>Gemini</h3>
+                        </div>
+                    </div>
+                    <p class="section-text" style="font-size:14px; margin-top: 1rem;">
+                        Used for rapid information retrieval, quick code snippets, and integration into Google's ecosystem. Its fast reasoning helps with iterative prototyping and research.
+                    </p>
+                </div>
+
+                <div class="skill-category-card">
+                    <div class="category-card-header">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <img src="images/icons/openai.svg" alt="ChatGPT" class="ai-toolkit-icon">
+                            <h3>ChatGPT</h3>
+                        </div>
+                    </div>
+                    <p class="section-text" style="font-size:14px; margin-top: 1rem;">
+                        The versatile all-rounder. Often used for creative brainstorming, writing documentation, drafting communications, and generating initial script templates.
+                    </p>
+                </div>
+
+                <div class="skill-category-card">
+                    <div class="category-card-header">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <!-- Generic icon for Antigravity if none exists -->
+                            <div style="width: 24px; height: 24px; border: 1px solid var(--text-muted); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold;">AGY</div>
+                            <h3>Antigravity</h3>
+                        </div>
+                    </div>
+                    <p class="section-text" style="font-size:14px; margin-top: 1rem;">
+                        An advanced agentic coding assistant that can autonomously operate on my local workspace. Essential for hands-free refactoring, systematic project overhauls, and deep codebase changes.
+                    </p>
+                </div>
+
+                <div class="skill-category-card">
+                    <div class="category-card-header">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <img src="images/icons/cursor.svg" alt="Cursor" class="ai-toolkit-icon">
+                            <h3>Cursor</h3>
+                        </div>
+                    </div>
+                    <p class="section-text" style="font-size:14px; margin-top: 1rem;">
+                        My AI-first IDE of choice. Cursor bridges the gap between conversational AI and raw text editing, allowing me to generate, edit, and predict code inline without leaving the editor.
+                    </p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- ================= GLOBAL FOOTER ================= -->
@@ -238,7 +323,7 @@
                     <span class="logo-text">JUSWA<span>.</span></span>
                 </a>
                 <p class="footer-name">Joshua Aquino Lagare</p>
-                <p class="footer-tagline">Computer Engineering • Development • Art</p>
+                <p class="footer-tagline">Computer Engineering &bull; Development &bull; Art</p>
                 <p class="footer-desc">
                     Building practical technology across software, embedded systems, and IoT with creative discipline and digital art.
                 </p>
@@ -259,11 +344,11 @@
             <div class="footer-col">
                 <h4 class="footer-heading">CONNECT</h4>
                 <ul class="footer-links">
-                    <li><a href="mailto:joshualagare255@gmail.com">Email ↗</a></li>
-                    <li><a href="https://github.com/Shuwawao" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
-                    <li><a href="https://www.instagram.com/juswa_draws" target="_blank" rel="noopener noreferrer">Instagram (Art) ↗</a></li>
-                    <li><a href="https://www.instagram.com/shuwawao" target="_blank" rel="noopener noreferrer">Instagram (Personal) ↗</a></li>
-                    <li><a href="https://www.facebook.com/share/1F1aA2ChW4/" target="_blank" rel="noopener noreferrer">Facebook ↗</a></li>
+                    <li><a href="mailto:joshualagare255@gmail.com">Email &nearr;</a></li>
+                    <li><a href="https://github.com/Shuwawao" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a></li>
+                    <li><a href="https://www.instagram.com/juswa_draws" target="_blank" rel="noopener noreferrer">Instagram (Art) &nearr;</a></li>
+                    <li><a href="https://www.instagram.com/shuwawao" target="_blank" rel="noopener noreferrer">Instagram (Personal) &nearr;</a></li>
+                    <li><a href="https://www.facebook.com/share/1F1aA2ChW4/" target="_blank" rel="noopener noreferrer">Facebook &nearr;</a></li>
                 </ul>
             </div>
 
