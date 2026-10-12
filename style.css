@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    JUSWA PORTFOLIO â€” DESIGN SYSTEM & STYLESHEET
    Concept: A developer's workspace where engineering and digital art meet.
    CODE + HARDWARE + ART
@@ -3791,5 +3791,271 @@ body {
 
     .nav-item-meta {
         white-space: normal;
+    }
+}
+
+/* ================= ART COMMISSION & EXTENDED PORTFOLIO CARD ================= */
+.art-commission-card {
+    position: relative;
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(182, 154, 255, 0.05) 100%), var(--surface);
+    border: 1px solid var(--accent-border);
+    border-radius: 24px;
+    padding: 40px 44px;
+    margin: 56px 0 20px;
+    display: grid;
+    grid-template-columns: 240px 1fr auto;
+    align-items: center;
+    gap: 40px;
+    overflow: hidden;
+    box-shadow: 0 18px 45px -12px rgba(182, 154, 255, 0.14);
+    transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.art-commission-card::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -15%;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(182, 154, 255, 0.16) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.art-commission-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 28px 65px -12px rgba(182, 154, 255, 0.3);
+}
+
+/* Mascot Wrapper with Floating Animation */
+.commission-mascot-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    perspective: 800px;
+}
+
+.commission-mascot-halo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(182, 154, 255, 0.32) 0%, rgba(255, 184, 108, 0.18) 45%, transparent 72%);
+    border-radius: 50%;
+    filter: blur(16px);
+    pointer-events: none;
+    z-index: 0;
+    animation: pulseHalo 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulseHalo {
+    0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.65; }
+    100% { transform: translate(-50%, -50%) scale(1.12); opacity: 1; }
+}
+
+.commission-mascot-img {
+    position: relative;
+    z-index: 1;
+    width: 210px;
+    height: auto;
+    max-height: 220px;
+    object-fit: contain;
+    border-radius: 18px;
+    filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.35));
+    animation: floatMascot 4.5s ease-in-out infinite;
+    transition: transform var(--transition-base), filter var(--transition-base);
+    user-select: none;
+}
+
+.art-commission-card:hover .commission-mascot-img {
+    transform: scale(1.08) rotate(-2deg);
+    filter: drop-shadow(0 20px 36px rgba(182, 154, 255, 0.45));
+}
+
+@keyframes floatMascot {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-9px) rotate(2deg);
+    }
+}
+
+.commission-mascot-tag {
+    position: relative;
+    z-index: 2;
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    background: var(--surface);
+    border: 1px solid var(--accent-border);
+    padding: 4px 12px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.art-commission-body {
+    position: relative;
+    z-index: 1;
+}
+
+.commission-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.pulse-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+}
+
+.commission-title {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 27px);
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 10px;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+}
+
+.commission-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin: 0 0 18px;
+    max-width: 620px;
+}
+
+.commission-desc strong {
+    color: var(--text);
+}
+
+.commission-meta-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.commission-pill {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border-subtle);
+    color: var(--text);
+    transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.art-commission-card:hover .commission-pill {
+    border-color: var(--accent-border);
+}
+
+.art-commission-cta {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.commission-big-btn {
+    white-space: nowrap;
+    padding: 14px 26px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 8px 24px -4px rgba(182, 154, 255, 0.35);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.commission-big-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 30px -2px rgba(182, 154, 255, 0.45);
+}
+
+.commission-subtext {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .art-commission-card {
+        grid-template-columns: 170px 1fr;
+        gap: 28px;
+        padding: 32px 30px;
+    }
+    
+    .art-commission-cta {
+        grid-column: 1 / -1;
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 680px) {
+    .art-commission-card {
+        grid-template-columns: 1fr;
+        padding: 28px 20px;
+        gap: 22px;
+        text-align: center;
+    }
+
+    .commission-mascot-wrapper {
+        margin: 0 auto;
+    }
+
+    .commission-mascot-img {
+        width: 150px;
+        max-height: 150px;
+    }
+
+    .commission-eyebrow {
+        justify-content: center;
+    }
+
+    .commission-meta-pills {
+        justify-content: center;
+    }
+
+    .art-commission-cta {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 6px;
+    }
+
+    .commission-big-btn {
+        width: 100%;
+        justify-content: center;
     }
 }
