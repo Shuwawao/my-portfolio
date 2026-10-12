@@ -479,17 +479,52 @@ function initCustomCursor() {
             ring.classList.remove("cursor-active");
         }
     });
-}function initThemeToggle() {
-    const toggleBtn = document.getElementById('theme-toggle');
-    if (!toggleBtn) return;
-    
-    toggleBtn.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('juswa-theme', newTheme);
+}function updateThemeFavicon(theme) {
+    const isLight = theme === "light";
+    const faviconHref = isLight ? "images/favicon-light.png" : "images/favicon-dark.png";
+
+    // 1. Update browser tab favicon
+    const favicons = document.querySelectorAll("link[rel*='icon']");
+    favicons.forEach(fav => {
+        fav.removeAttribute("media");
+        fav.href = faviconHref;
     });
+
+    // 2. Update navbar logo-badge images
+    const logoImgs = document.querySelectorAll(".logo-badge img");
+    logoImgs.forEach(img => {
+        img.src = faviconHref;
+    });
+}
+
+function initThemeToggle() {
+    const toggleBtn = document.getElementById('theme-toggle');
+    
+    // Initial sync of favicon & navbar logo on load
+    const initialTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    updateThemeFavicon(initialTheme);
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('juswa-theme', newTheme);
+            updateThemeFavicon(newTheme);
+        });
+    }
+
+    // Sync if OS system theme preference changes while user has not manually set a preference
+    if (window.matchMedia) {
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+            if (!localStorage.getItem("juswa-theme")) {
+                const systemTheme = e.matches ? "dark" : "light";
+                document.documentElement.setAttribute("data-theme", systemTheme);
+                updateThemeFavicon(systemTheme);
+            }
+        });
+    }
 }
 
 
