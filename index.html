@@ -1,18 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
-<head><script>
-window.addEventListener('DOMContentLoaded', () => {
-    const wide = [];
-    document.querySelectorAll('*').forEach(el => {
-        const r = el.getBoundingClientRect();
-        if (r.right > 391) {
-            wide.push(el.tagName + (el.className ? '.' + el.className.split(' ').join('.') : (el.id ? '#' + el.id : '')) + ' (right=' + Math.round(r.right) + ')');
-        }
-    });
-    document.title = 'WIDE:' + wide.slice(0, 10).join(' | ');
-});
-</script>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="JUSWA &mdash; Computer Engineering student, developer, and digital artist exploring software, embedded systems, IoT, and digital art.">
@@ -34,11 +23,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     <!-- ================= GLOBAL NAVIGATION ================= -->
         <header class="navbar" id="navbar">
-        <a href="index.html" class="logo">
+        <a href="index.html" class="logo" aria-label="JUSWA Home">
             <div class="logo-badge">
-                <img src="images/favicon.png" alt="JUSWA Logo">
+                <img src="images/favicon.png" alt="JUSWA Cat Icon">
             </div>
-            <span class="logo-text">JUSWA<span>.</span></span>
+            <img src="images/juswa-wordmark-white.png" alt="JUSWA" class="logo-wordmark-img">
             <span class="logo-meta">WORKSPACE</span>
         </a>
 
@@ -84,7 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
                             <span>STATUS: ONLINE</span>
                         </span>
                         <span class="telemetry-item">
-                            COMPUTER ENGINEERING &bull; DEVELOPMENT &bull; ART
+                            COMPUTER ENGINEERING / SOFTWARE / CREATIVE DESIGN
                         </span>
                     </div>
 
@@ -101,15 +90,15 @@ window.addEventListener('DOMContentLoaded', () => {
                     </h1>
 
                     <p class="hero-description">
-                        <strong>JUSWA</strong> &mdash; Computer engineering student, developer, and digital artist exploring the intersection of technology and creativity.
+                        I'm Joshua, a Computer Engineering student building software, exploring embedded systems, and experimenting with the intersection of technology and design.
                     </p>
 
                     <div class="hero-buttons">
                         <a href="projects.html" class="button primary">
-                            View Work <span class="arrow">&rarr;</span>
+                            Explore My Work <span class="arrow">&rarr;</span>
                         </a>
-                        <a href="about.html" class="button secondary">
-                            About Me
+                        <a href="https://github.com/Shuwawao" target="_blank" rel="noopener noreferrer" class="button secondary">
+                            View GitHub <span class="arrow">&nearr;</span>
                         </a>
                     </div>
                 </div>
@@ -422,6 +411,9 @@ window.addEventListener('DOMContentLoaded', () => {
             </div>
         </section>
 
+
+        
+
         <!-- ================= CONTACT CTA ================= -->
         <section class="section reveal-on-scroll">
             <div class="contact-layout">
@@ -464,8 +456,8 @@ window.addEventListener('DOMContentLoaded', () => {
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-col footer-col-brand">
-                <a href="index.html" class="footer-logo">
-                    <span class="logo-text">JUSWA<span>.</span></span>
+                <a href="index.html" class="footer-logo" aria-label="JUSWA Home">
+                    <img src="images/juswa-wordmark-white.png" alt="JUSWA" class="footer-wordmark-img">
                 </a>
                 <p class="footer-name">Joshua Aquino Lagare</p>
                 <p class="footer-tagline">Computer Engineering &bull; Development &bull; Art</p>

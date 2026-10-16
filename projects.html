@@ -23,11 +23,11 @@
 
     <!-- ================= GLOBAL NAVIGATION ================= -->
         <header class="navbar" id="navbar">
-        <a href="index.html" class="logo">
+        <a href="index.html" class="logo" aria-label="JUSWA Home">
             <div class="logo-badge">
-                <img src="images/favicon.png" alt="JUSWA Logo">
+                <img src="images/favicon.png" alt="JUSWA Cat Icon">
             </div>
-            <span class="logo-text">JUSWA<span>.</span></span>
+            <img src="images/juswa-wordmark-white.png" alt="JUSWA" class="logo-wordmark-img">
             <span class="logo-meta">WORKSPACE</span>
         </a>
 
@@ -77,10 +77,30 @@
                 </div>
             </div>
 
-            <div class="projects-editorial-list">
+            <!-- PROJECTS CATEGORY FILTER -->
+            <div class="projects-filter-bar" role="toolbar" aria-label="Filter projects by discipline">
+                <button type="button" class="project-filter-pill active" data-filter="all" aria-pressed="true">
+                    <span>All Builds</span>
+                    <span class="filter-count">3</span>
+                </button>
+                <button type="button" class="project-filter-pill" data-filter="software" aria-pressed="false">
+                    <span>Software &amp; Mobile</span>
+                    <span class="filter-count">1</span>
+                </button>
+                <button type="button" class="project-filter-pill" data-filter="embedded" aria-pressed="false">
+                    <span>Embedded Systems</span>
+                    <span class="filter-count">1</span>
+                </button>
+                <button type="button" class="project-filter-pill" data-filter="iot" aria-pressed="false">
+                    <span>IoT &amp; Wearables</span>
+                    <span class="filter-count">1</span>
+                </button>
+            </div>
+
+            <div class="projects-editorial-list" id="projects-editorial-list">
 
                 <!-- PROJECT 01: SYNCED N -->
-                <article class="project-showcase-entry reveal-on-scroll">
+                <article class="project-showcase-entry reveal-on-scroll" data-category="software">
                     <div class="project-entry-details">
                         <div class="project-meta-top">
                             <span class="project-serial">01</span>
@@ -119,7 +139,7 @@
                 </article>
 
                 <!-- PROJECT 02: SMART ASSISTIVE CANE -->
-                <article class="project-showcase-entry reveal-on-scroll">
+                <article class="project-showcase-entry reveal-on-scroll" data-category="embedded">
                     <div class="project-entry-details">
                         <div class="project-meta-top">
                             <span class="project-serial">02</span>
@@ -159,7 +179,7 @@
                 </article>
 
                 <!-- PROJECT 03: SMART MEDICATION SYSTEM -->
-                <article class="project-showcase-entry reveal-on-scroll">
+                <article class="project-showcase-entry reveal-on-scroll" data-category="iot">
                     <div class="project-entry-details">
                         <div class="project-meta-top">
                             <span class="project-serial">03</span>
@@ -197,6 +217,13 @@
                     </div>
                 </article>
 
+                <!-- Filter Empty State -->
+                <div class="projects-empty-state" id="projects-empty-state" style="display: none;" role="status">
+                    <div class="empty-state-icon">[ 00 ]</div>
+                    <h4>No projects found</h4>
+                    <p>No builds currently matching this filter discipline.</p>
+                    <button type="button" class="button secondary reset-filter-btn" id="reset-filter-btn">Reset Filters</button>
+                </div>
             </div>
         </section>
     </main>
@@ -205,8 +232,8 @@
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-col footer-col-brand">
-                <a href="index.html" class="footer-logo">
-                    <span class="logo-text">JUSWA<span>.</span></span>
+                <a href="index.html" class="footer-logo" aria-label="JUSWA Home">
+                    <img src="images/juswa-wordmark-white.png" alt="JUSWA" class="footer-wordmark-img">
                 </a>
                 <p class="footer-name">Joshua Aquino Lagare</p>
                 <p class="footer-tagline">Computer Engineering &bull; Development &bull; Art</p>

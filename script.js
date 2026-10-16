@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initArtworkLightbox();
     initScrollReveal();
     initFeaturedShowcase();
+    initProjectsFilter();
     initCustomCursor();
 });
 
@@ -482,6 +483,7 @@ function initCustomCursor() {
 }function updateThemeFavicon(theme) {
     const isLight = theme === "light";
     const faviconHref = isLight ? "images/favicon-light.png" : "images/favicon-dark.png";
+    const wordmarkHref = isLight ? "images/juswa-wordmark-black.png" : "images/juswa-wordmark-white.png";
 
     // 1. Update browser tab favicon
     const favicons = document.querySelectorAll("link[rel*='icon']");
@@ -494,6 +496,12 @@ function initCustomCursor() {
     const logoImgs = document.querySelectorAll(".logo-badge img");
     logoImgs.forEach(img => {
         img.src = faviconHref;
+    });
+
+    // 3. Update theme-adaptive handwritten wordmarks in navbar & footer
+    const wordmarkImgs = document.querySelectorAll(".logo-wordmark-img, .footer-wordmark-img");
+    wordmarkImgs.forEach(img => {
+        img.src = wordmarkHref;
     });
 }
 
@@ -681,5 +689,63 @@ function initFeaturedShowcase() {
         observer.observe(section);
     } else {
         isSectionVisible = true;
+    }
+}
+// ================= 11. PROJECTS CATEGORY FILTER =================
+function initProjectsFilter() {
+    const filterBar = document.querySelector(".projects-filter-bar");
+    const filterPills = document.querySelectorAll(".project-filter-pill");
+    const projectCards = document.querySelectorAll(".project-showcase-entry");
+    const emptyState = document.getElementById("projects-empty-state");
+    const resetBtn = document.getElementById("reset-filter-btn");
+
+    if (!filterBar || !filterPills.length || !projectCards.length) return;
+
+    function applyFilter(category) {
+        let visibleCount = 0;
+
+        filterPills.forEach(pill => {
+            const matches = pill.getAttribute("data-filter") === category;
+            pill.classList.toggle("active", matches);
+            pill.setAttribute("aria-pressed", String(matches));
+        });
+
+        projectCards.forEach(card => {
+            const cardCat = card.getAttribute("data-category") || "";
+            const isMatch = (category === "all") || (cardCat === category);
+
+            if (isMatch) {
+                card.style.display = "";
+                // trigger re-visibility
+                card.classList.add("revealed");
+                visibleCount++;
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        if (emptyState) {
+            emptyState.style.display = visibleCount === 0 ? "block" : "none";
+        }
+    }
+
+    filterPills.forEach(pill => {
+        pill.addEventListener("click", () => {
+            const filter = pill.getAttribute("data-filter") || "all";
+            applyFilter(filter);
+        });
+
+        pill.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                pill.click();
+            }
+        });
+    });
+
+    if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
+            applyFilter("all");
+        });
     }
 }
