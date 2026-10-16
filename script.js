@@ -1,4 +1,4 @@
-﻿// ==========================================================================
+// ==========================================================================
 // JUSWA PORTFOLIO — GLOBAL INTERACTIVE ENGINE
 // Lightweight Vanilla JavaScript (Zero bloated frameworks)
 // ==========================================================================
@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initFeaturedShowcase();
     initProjectsFilter();
     initCustomCursor();
+    initGitHubActivity();
 });
 
 // ================= 1. GLOBAL NAVIGATION & RELIABLE ACTIVE DETECTION =================
@@ -748,4 +749,212 @@ function initProjectsFilter() {
             applyFilter("all");
         });
     }
+}
+
+// ================= 12. GITHUB LIVE ACTIVITY HEATMAP =================
+function initGitHubActivity() {
+    const container = document.getElementById("github-heatmap-container");
+    const totalEl = document.getElementById("github-total-contributions");
+    const yearBadge = document.getElementById("github-year-badge");
+    const viewport = document.getElementById("github-heatmap-viewport");
+
+    if (!container) return;
+
+    const username = "Shuwawao";
+    const primaryApiUrl = `https://github-contributions-api.jogruber.de/v4/${username}?y=last`;
+    const fallbackLocalUrl = "data/github-contributions.json";
+
+    // Setup or get floating HUD tooltip
+    let tooltip = document.getElementById("github-heatmap-tooltip");
+    if (!tooltip) {
+        tooltip = document.createElement("div");
+        tooltip.id = "github-heatmap-tooltip";
+        tooltip.className = "github-heatmap-tooltip";
+        document.body.appendChild(tooltip);
+    }
+
+    async function loadData() {
+        try {
+            // Live fetch with no-cache so every page view gets the latest commits from GitHub
+            const res = await fetch(primaryApiUrl, { cache: "no-cache" });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const data = await res.json();
+            renderHeatmap(data);
+        } catch (err) {
+            console.warn("GitHub live API stream failed, attempting local fallback cache:", err);
+            try {
+                const fallbackRes = await fetch(fallbackLocalUrl);
+                const fallbackData = await fallbackRes.json();
+                renderHeatmap(fallbackData);
+            } catch (fallbackErr) {
+                console.error("Failed to load GitHub activity data:", fallbackErr);
+                container.innerHTML = `
+                    <div class="github-heatmap-error">
+                        <span>TELEMETRY OFFLINE // GITHUB REPOSITORY ACCESSIBLE</span>
+                        <a href="https://github.com/${username}" target="_blank" rel="noopener noreferrer" class="button secondary">View Profile ↗</a>
+                    </div>`;
+            }
+        }
+    }
+
+    function renderHeatmap(data) {
+        if (!data || !data.contributions || !data.contributions.length) return;
+
+        const contributions = data.contributions;
+        const total = (data.total && data.total.lastYear != null) ? data.total.lastYear : contributions.reduce((sum, c) => sum + (c.count || 0), 0);
+
+        if (totalEl) {
+            totalEl.textContent = total;
+        }
+
+        const firstDate = new Date(contributions[0].date);
+        const lastDate = new Date(contributions[contributions.length - 1].date);
+        if (yearBadge) {
+            yearBadge.textContent = `${firstDate.getUTCFullYear()} – ${lastDate.getUTCFullYear()}`;
+        }
+
+        // Group into weeks (columns). GitHub standard weeks start on Sunday (day 0)
+        const weeks = [];
+        let currentWeek = [];
+
+        // Pad first week if first contribution date is not Sunday
+        const startDay = firstDate.getUTCDay();
+        for (let i = 0; i < startDay; i++) {
+            currentWeek.push(null);
+        }
+
+        contributions.forEach(item => {
+            currentWeek.push(item);
+            if (currentWeek.length === 7) {
+                weeks.push(currentWeek);
+                currentWeek = [];
+            }
+        });
+        if (currentWeek.length > 0) {
+            weeks.push(currentWeek);
+        }
+
+        // Determine month positions along the 53 weeks
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const monthPositions = [];
+        let lastSeenMonth = -1;
+
+        weeks.forEach((wk, weekIdx) => {
+            const firstValid = wk.find(d => d !== null);
+            if (firstValid) {
+                const m = new Date(firstValid.date).getUTCMonth();
+                if (m !== lastSeenMonth) {
+                    monthPositions.push({ month: monthNames[m], col: weekIdx });
+                    lastSeenMonth = m;
+                }
+            }
+        });
+
+        // Construct semantic, accessible HTML grid
+        let html = '<div class="gh-calendar-grid" role="grid" aria-label="GitHub Contributions Heatmap">';
+
+        // Month labels row
+        html += '<div class="gh-months-row" aria-hidden="true">';
+        html += '<div class="gh-weekday-spacer"></div>';
+        html += '<div class="gh-months-track">';
+        monthPositions.forEach(mp => {
+            html += `<span class="gh-month-label" style="grid-column-start: ${mp.col + 1}">${mp.month}</span>`;
+        });
+        html += '</div></div>';
+
+        // Heatmap body: weekdays on left, week columns on right
+        html += '<div class="gh-body-row">';
+        html += '<div class="gh-weekdays-col" aria-hidden="true">';
+        html += '<span class="gh-weekday-label"></span>'; // Sun
+        html += '<span class="gh-weekday-label">Mon</span>';
+        html += '<span class="gh-weekday-label"></span>'; // Tue
+        html += '<span class="gh-weekday-label">Wed</span>';
+        html += '<span class="gh-weekday-label"></span>'; // Thu
+        html += '<span class="gh-weekday-label">Fri</span>';
+        html += '<span class="gh-weekday-label"></span>'; // Sat
+        html += '</div>';
+
+        // 53-week columns
+        html += '<div class="gh-weeks-grid">';
+        weeks.forEach((wk, wIdx) => {
+            html += `<div class="gh-week-col" data-week="${wIdx}">`;
+            for (let dayIdx = 0; dayIdx < 7; dayIdx++) {
+                const dayData = wk[dayIdx];
+                if (!dayData) {
+                    html += '<div class="gh-day-cell gh-day-empty" aria-hidden="true"></div>';
+                } else {
+                    const count = dayData.count || 0;
+                    const level = dayData.level || 0;
+                    const dateStr = dayData.date;
+                    html += `<div class="gh-day-cell level-${level}" data-date="${dateStr}" data-count="${count}" tabindex="0" role="gridcell" aria-label="${count} contributions on ${dateStr}"></div>`;
+                }
+            }
+            html += '</div>';
+        });
+        html += '</div></div></div>';
+
+        container.innerHTML = html;
+
+        // Auto-scroll viewport so today's latest contributions are directly visible
+        if (viewport) {
+            setTimeout(() => {
+                viewport.scrollLeft = viewport.scrollWidth;
+            }, 60);
+        }
+
+        // Setup HUD Tooltip events
+        const cells = container.querySelectorAll('.gh-day-cell[data-date]');
+        cells.forEach(cell => {
+            const showTooltip = (e) => {
+                const count = cell.getAttribute('data-count');
+                const dateStr = cell.getAttribute('data-date');
+                const d = new Date(dateStr + "T00:00:00Z");
+                const formattedDate = d.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric',
+                    timeZone: 'UTC'
+                });
+
+                const countText = count === "1" ? "1 contribution" : `${count} contributions`;
+                tooltip.innerHTML = `<strong>${countText}</strong> on ${formattedDate}`;
+                tooltip.classList.add('visible');
+                updateTooltipPos(e.clientX || cell.getBoundingClientRect().left, e.clientY || cell.getBoundingClientRect().top);
+            };
+
+            cell.addEventListener('mouseenter', showTooltip);
+            cell.addEventListener('focus', () => {
+                const rect = cell.getBoundingClientRect();
+                showTooltip({ clientX: rect.left + rect.width / 2, clientY: rect.top });
+            });
+
+            cell.addEventListener('mousemove', (e) => {
+                updateTooltipPos(e.clientX, e.clientY);
+            });
+
+            cell.addEventListener('mouseleave', () => {
+                tooltip.classList.remove('visible');
+            });
+            cell.addEventListener('blur', () => {
+                tooltip.classList.remove('visible');
+            });
+        });
+    }
+
+    function updateTooltipPos(clientX, clientY) {
+        if (!tooltip) return;
+        const tw = tooltip.offsetWidth || 180;
+        const th = tooltip.offsetHeight || 32;
+        let left = clientX - tw / 2;
+        let top = clientY - th - 12;
+
+        if (left < 10) left = 10;
+        if (left + tw > window.innerWidth - 10) left = window.innerWidth - tw - 10;
+        if (top < 10) top = clientY + 18;
+
+        tooltip.style.left = `${left}px`;
+        tooltip.style.top = `${top}px`;
+    }
+
+    loadData();
 }
